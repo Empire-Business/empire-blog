@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Empire Business - Blog Post Detail</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1d2a3a",
+              "background-light": "#f2f2f2",
+              "background-dark": "#16191c",
+              "glass-border": "rgba(255, 255, 255, 0.4)",
+              "glass-bg": "rgba(255, 255, 255, 0.65)",
+            },
+            fontFamily: {
+              "display": ["Archivo", "sans-serif"],
+              "body": ["Archivo", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "2xl": "2rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>.glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        }
+        .glass-nav {
+            background: rgba(29, 42, 58, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+        }.prose p {
+            margin-bottom: 1.75rem;
+            line-height: 1.85;
+            color: #374151;
+            font-size: 1.125rem;
+        }
+        .prose h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1d2a3a;
+            margin-top: 3.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        .prose h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1d2a3a;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-background-light font-body text-primary antialiased selection:bg-primary/20">
+<header class="sticky top-0 z-50 w-full glass-nav border-b border-[#2d3034]">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-white hover:opacity-90 transition-opacity" href="#">
+<div class="size-8 text-white">
+<svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_319)">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+</g>
+<defs>
+<clipPath id="clip0_6_319"><rect fill="white" height="48" width="48"></rect></clipPath>
+</defs>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Empire Business</h2>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-gray-300 text-sm font-medium hover:text-white transition-colors" href="#">Strategy</a>
+<a class="text-gray-300 text-sm font-medium hover:text-white transition-colors" href="#">Innovation</a>
+<a class="text-gray-300 text-sm font-medium hover:text-white transition-colors" href="#">Leadership</a>
+<a class="text-gray-300 text-sm font-medium hover:text-white transition-colors" href="#">Markets</a>
+<a class="text-white text-sm font-medium border-b-2 border-white pb-0.5" href="#">Podcast</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-[#2d3034] rounded-full px-4 h-10 w-64 border border-[#3d4146] focus-within:border-gray-500 transition-colors">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">search</span>
+<input class="bg-transparent border-none text-white text-sm w-full focus:ring-0 placeholder:text-gray-500 ml-2 font-display" placeholder="Search insights..."/>
+</div>
+<button class="bg-white text-primary hover:bg-gray-100 px-6 h-10 rounded-full text-sm font-bold transition-all transform hover:scale-105 font-display">
+                        Subscribe
+                    </button>
+</div>
+</div>
+</div>
+</header>
+<div class="relative w-full py-24 pb-32">
+<div class="absolute inset-0 z-0 overflow-hidden">
+<img class="w-full h-full object-cover opacity-20 filter blur-sm" data-alt="Blurred abstract corporate office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa1wFLzBWnO_ZPaLnz9mIFeQyGSrgx9VefYkTuy-y35mUOnYyLC2awrx82gef_dkBTroaAsKDf8BMcxX4hma_Pj31EXTd9E0Xk1xgihun62hsJGRcpTY70cV41zRuOh2CFwChxccxlij5CykxP9zHQ8bHirkYs9AJ3JAjvDfH3H7mFjWuVSbZo5195Z3SFnwHuAEjIZSuRSN8uA_Rb43JWgqK0nqhs1jCVjySdNOq3Qvlr2Yw9jE3v1fJLyT0Tw7AUJg_thRHGMPk"/>
+<div class="absolute inset-0 bg-gradient-to-b from-[#f2f2f2]/80 via-[#f2f2f2]/95 to-[#f2f2f2]"></div>
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-blob"></div>
+<div class="absolute top-0 left-0 w-[500px] h-[500px] bg-gray-200 rounded-full mix-blend-multiply filter blur-[100px] opacity-70 animate-blob animation-delay-2000"></div>
+</div>
+<div class="relative z-10 max-w-[1000px] mx-auto px-4 sm:px-6 text-center">
+<div class="flex items-center justify-center gap-2 mb-8 text-sm font-medium">
+<a class="text-gray-500 hover:text-primary transition-colors" href="#">Home</a>
+<span class="text-gray-300">/</span>
+<a class="text-gray-500 hover:text-primary transition-colors" href="#">Blog</a>
+<span class="text-gray-300">/</span>
+<span class="px-3 py-1 rounded-full bg-primary/5 text-primary text-xs uppercase tracking-wider font-bold">Strategy</span>
+</div>
+<h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-primary leading-[1.05] tracking-tight mb-8">
+            Scaling Your Empire: The definitive guide to sustainable growth
+        </h1>
+<p class="text-xl md:text-2xl text-gray-600 font-light leading-relaxed max-w-3xl mx-auto mb-10">
+            A deep dive into the operational, financial, and cultural shifts required to take your organization to the next level.
+        </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="absolute inset-0 bg-blue-500 rounded-full blur-sm opacity-20"></div>
+<img class="relative w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Author Alexander Sterling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcjJ6udkYAe8tRqMNG2qC8aNzuF2Yk1C3kZ1dL4_a5ONRNVmz1VrUGQnaA_zAeVW_k33dg9aKqo-K6kEiOzBdUCGe07PHwO68McoWa2GHgXKKJHJiX71ltvh8F_LrTl0NroaIpKkabLdbziXyL9pLF3rUMZ64WhnX_h8yG3LLTzqpBQYnIWdgU9vK7DZtMErqIgDlVf7JgWCuFMzgdOQONUhojuZysPbby2Q6oKLsVl7oyZWRUdDsLp4n4AtfOXKDw8bDz35UsKv4"/>
+</div>
+<div class="text-left">
+<p class="text-primary font-bold text-base leading-tight">Alexander Sterling</p>
+<p class="text-gray-500 text-xs font-medium uppercase tracking-wide">Chief Editor</p>
+</div>
+</div>
+<div class="h-8 w-[1px] bg-gray-300 hidden md:block"></div>
+<div class="flex items-center gap-6 text-sm text-gray-500 font-medium">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                    Oct 24, 2023
+                </span>
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+                    12 min read
+                </span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-20 -mt-20 pb-24">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<aside class="hidden lg:block lg:col-span-1">
+<div class="sticky top-32 flex flex-col items-center gap-5 glass-card rounded-full py-6 px-3 shadow-lg">
+<button class="p-3 rounded-full hover:bg-primary/10 text-gray-500 hover:text-primary transition-all duration-300 group relative">
+<span class="material-symbols-outlined filled-icon">favorite</span>
+<span class="absolute left-14 bg-primary text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">Like</span>
+</button>
+<button class="p-3 rounded-full hover:bg-primary/10 text-gray-500 hover:text-primary transition-all duration-300 group relative">
+<span class="material-symbols-outlined">share</span>
+<span class="absolute left-14 bg-primary text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">Share</span>
+</button>
+<button class="p-3 rounded-full hover:bg-primary/10 text-gray-500 hover:text-primary transition-all duration-300 group relative">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="absolute left-14 bg-primary text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">Save</span>
+</button>
+<div class="w-8 h-[1px] bg-gray-300 my-2"></div>
+<div class="text-xs font-bold text-gray-400 text-center">
+                    2.4k<br/>Views
+                </div>
+</div>
+</aside>
+<main class="col-span-1 lg:col-span-8">
+<div class="glass-panel rounded-3xl p-8 md:p-12 lg:p-14 shadow-xl">
+<div class="relative w-full h-[400px] mb-12 rounded-2xl overflow-hidden shadow-md group">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-60 z-10"></div>
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Modern glass corporate building looking up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDBRK4rwvFF0w7uw7fdlKB67m9etX2GS-j7r_SHtMpjqRpvhPYW3EJRHWejE1r3gmomLDedxiX2xpetK48wS0f8RsbT2dUi-j06LdD_vxnybpUr1OMBZ--xvJFxZ1tNvcR2CyMmlUz4aCaqjosx5PmMCxJMAVl4jf4kZ8UhJtSDOUjee8phZLwNzhAlqr_k4Gio7f1vUTQ2SbqcyWtvxS9updesYMbv0XxBaaRWB628AMHL2TRuJW2hfW__tQHKi1TIs8_b1--pU0"/>
+<div class="absolute bottom-6 left-6 z-20">
+<span class="bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-bold px-3 py-1.5 rounded-lg">Featured Insight</span>
+</div>
+</div>
+<p class="text-2xl font-medium text-primary mb-12 leading-relaxed border-b border-gray-100 pb-10">
+                            Most founders dream of the moment their startup begins to gain real traction. Yet, paradoxically, this is often the moment of greatest vulnerability. Scaling is not simply doing "more" of what you’re already doing—it’s doing things fundamentally differently.
+                        </p>
+<div class="prose max-w-none text-gray-700">
+<p>
+                                In the early days, scrappiness is a virtue. You move fast, break things, and make decisions based on gut instinct. But as you cross the threshold from a small team to a growing organization, that same scrappiness can become a liability. Processes break, communication silos form, and the culture that once felt electric can start to feel chaotic.
+                            </p>
+<h2>The Three Pillars of Sustainable Scale</h2>
+<p>
+                                Through our analysis of over 500 high-growth companies, we've identified three non-negotiable pillars that support sustainable scaling: Operational Rigor, Financial Foresight, and Cultural Intentionality.
+                            </p>
+<div class="my-14 p-8 bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-100 relative overflow-hidden">
+<div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-50 rounded-full blur-2xl"></div>
+<span class="material-symbols-outlined text-4xl text-primary/20 absolute top-6 left-6">format_quote</span>
+<blockquote class="relative z-10 pl-10">
+<p class="text-2xl font-display font-semibold text-primary mb-4 italic leading-snug">
+                                    "Growth creates complexity, and complexity kills growth. The only antidote is simplicity through systems."
+                                </p>
+<footer class="flex items-center gap-3 mt-6">
+<div class="w-8 h-[1px] bg-primary/30"></div>
+<cite class="text-sm font-bold not-italic text-gray-600">Sarah Chen, Managing Partner at VentureFlow</cite>
+</footer>
+</blockquote>
+</div>
+<h3>1. Operational Rigor</h3>
+<p>
+                                It's not about bureaucracy; it's about clarity. When you have 10 employees, everyone knows what everyone else is doing. When you have 100, that knowledge is gone. Implementing lightweight, scalable systems early allows you to maintain velocity without sacrificing quality. This means documenting processes, establishing clear KPIs, and automating repetitive tasks.
+                            </p>
+<h3>2. Financial Foresight</h3>
+<p>
+                                Cash flow kills more scaling companies than lack of product-market fit. As you grow, your burn rate accelerates, and your cash conversion cycle often lengthens. Sustainable growth requires moving from reactive accounting to proactive financial modeling. You need to know not just where your money is today, but where it will be in six, twelve, and eighteen months.
+                            </p>
+<p>
+                                Consider the "Rule of 40" — a principle stating that your growth rate plus your profit margin should equal or exceed 40%. While typically applied to SaaS companies, the underlying logic holds true for many industries: balance growth with efficiency.
+                            </p>
+<h3>3. Cultural Intentionality</h3>
+<p>
+                                Culture is what happens when you're not in the room. As a founder, you can't be in every meeting or make every decision. You need to embed your values into the organization's DNA so that employees can make autonomous decisions aligned with the company's vision. This requires explicit definition of values, consistent reinforcement through rituals, and hiring for cultural contribution, not just fit.
+                            </p>
+</div>
+<div class="mt-16 pt-10 border-t border-gray-200 flex flex-wrap items-center gap-4">
+<span class="text-sm font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">sell</span>
+                                Topics:
+                            </span>
+<a class="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow" href="#">Business Growth</a>
+<a class="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow" href="#">Management</a>
+<a class="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow" href="#">Financial Strategy</a>
+</div>
+<div class="mt-12 p-8 bg-gray-50 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+<div>
+<h4 class="font-bold text-primary text-lg mb-1">Was this article helpful?</h4>
+<p class="text-sm text-gray-500">Your feedback helps us create better content.</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 rounded-xl text-sm font-bold hover:border-primary hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg">thumb_up</span>
+                                    Yes
+                                </button>
+<button class="flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 rounded-xl text-sm font-bold hover:border-primary hover:text-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg">thumb_down</span>
+                                    No
+                                </button>
+</div>
+</div>
+</div>
+</main>
+<aside class="col-span-1 lg:col-span-3 space-y-8">
+<div class="glass-card p-6 rounded-2xl border border-white/60 shadow-sm sticky top-32">
+<h4 class="text-xs font-bold uppercase text-gray-400 tracking-wider mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-base">toc</span>
+                            On this page
+                        </h4>
+<ul class="space-y-4 text-sm relative">
+<div class="absolute left-[3px] top-2 bottom-2 w-[2px] bg-gray-100 rounded-full"></div>
+<div class="absolute left-[3px] top-2 h-6 w-[2px] bg-primary rounded-full transition-all duration-300"></div>
+<li class="pl-5 relative">
+<a class="text-primary font-bold hover:text-primary transition-colors block" href="#">Introduction</a>
+</li>
+<li class="pl-5 relative">
+<a class="text-gray-500 hover:text-primary transition-colors block" href="#">The Three Pillars</a>
+</li>
+<li class="pl-5 relative">
+<a class="text-gray-500 hover:text-primary transition-colors block" href="#">Operational Rigor</a>
+</li>
+<li class="pl-5 relative">
+<a class="text-gray-500 hover:text-primary transition-colors block" href="#">Financial Foresight</a>
+</li>
+<li class="pl-5 relative">
+<a class="text-gray-500 hover:text-primary transition-colors block" href="#">Cultural Intentionality</a>
+</li>
+</ul>
+</div>
+<div class="relative overflow-hidden rounded-2xl bg-[#1d2a3a] text-white p-8 shadow-2xl">
+<div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-600 rounded-full blur-[60px] opacity-40"></div>
+<div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-purple-600 rounded-full blur-[60px] opacity-30"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 backdrop-blur-sm">
+<span class="material-symbols-outlined text-white">school</span>
+</div>
+<h4 class="text-2xl font-bold mb-3 font-display">Empire Building 101</h4>
+<p class="text-sm text-gray-300 mb-8 leading-relaxed font-light">Join our exclusive 4-week cohort based program for scaling founders. Only 5 spots left.</p>
+<button class="w-full bg-white text-primary py-3.5 rounded-xl font-bold text-sm hover:bg-gray-100 transition-colors shadow-lg">
+                                Apply Now
+                            </button>
+</div>
+</div>
+<div class="glass-card rounded-2xl p-6 shadow-sm">
+<div class="flex items-center gap-4 mb-4">
+<img class="w-14 h-14 rounded-full object-cover ring-2 ring-white shadow-md" data-alt="Alexander Sterling portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASk12iFClXHAHV4KLWXu3yYHuel4konnmeLNjvlgeK4jVhSlTv4Q8fPFiwa_H900VovVt2cFG4rMWIeY-hjLLhN_XJfNSucReK6llRvlXlBTJz6fmtGc7OGJNjLDZbjYuKv2KvzrA0vo33szbz53haat_sIrQBD1_jXVnn-B7ODBsXgUvXYpo2JKIX8ceGm5fyeZOryYqGQiXS739_GjQRgCpB6Mpt9QIcopXV-hHEvJjAU7vPf-IR5bVSOV16RMy4Bel9XFjWyqU"/>
+<div>
+<h3 class="font-bold text-primary">Alexander Sterling</h3>
+<p class="text-xs text-gray-500 font-medium">Business Strategist</p>
+</div>
+</div>
+<p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Former VP of Ops at TechFlow. Writing about the intersection of leadership and strategy.
+                        </p>
+<button class="w-full py-2 rounded-lg border border-gray-200 text-gray-600 font-semibold text-xs hover:border-primary hover:text-primary transition-all">
+                            View Profile
+                        </button>
+</div>
+</aside>
+</div>
+</div>
+</div>
+<section class="bg-white py-24 border-t border-gray-100 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-4">
+<div>
+<h3 class="text-3xl font-bold text-primary mb-2">Continue Reading</h3>
+<p class="text-gray-500">Hand-picked articles related to scaling and strategy.</p>
+</div>
+<a class="group flex items-center gap-2 text-sm font-bold text-primary hover:opacity-70 transition-opacity" href="#">
+                View all articles
+                <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<a class="group block h-full cursor-pointer" href="#">
+<div class="h-full glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100">
+<div class="h-56 overflow-hidden relative">
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors z-10"></div>
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Abstract financial charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmZ-cQLQeuPwHutB3lsL1B3kvz2LG0k5U-q7-MYtVcTxB3Ptn15kAeh79TSY2ZgN8xXPKLwGSku7wiWIfjeEMvnSiYk9h_Xx5o5b6CLc0rgXRLuhEQwibhse9PWTNkeqbXXjhbOcBCdDlSzknVwgiCXJb5toDwQ57bh4PN_ju2m5u1UwN2fqWCtep0vYUZABIQnbuaMEWxORn4uRFbo6vw7mzEDsrIs-TzH0nK4YLiPZ-NSipmtmC5qtE504vYJRjvWfA8k_g6tQ0"/>
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-bold text-primary shadow-sm">Finance</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-2 text-xs text-gray-400 mb-3 font-medium">
+<span>Sep 12, 2023</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span>4 min read</span>
+</div>
+<h4 class="text-xl font-bold text-primary mb-3 group-hover:text-blue-600 transition-colors leading-tight">The Art of the Pivot: When to hold and when to fold</h4>
+<p class="text-gray-500 text-sm line-clamp-2 leading-relaxed">Understanding market signals is critical for survival. Here is how to analyze feedback loops effectively.</p>
+</div>
+</div>
+</a>
+<a class="group block h-full cursor-pointer" href="#">
+<div class="h-full glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100">
+<div class="h-56 overflow-hidden relative">
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors z-10"></div>
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Group brainstorming" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXPXzoF4Uttk-E3wbwSJ6BThxeshbvOsa19VSncNhp2vJkdwu-FPr5ZMcNUFJNWu_3vO3JDy5kHF_sLAtVJvmogcTOx_LlTI_WTPAuGVrIa7zY6ZHX7bGS4yPhbtFpNvLswNxTKjDHx__SphvTQL3rVKSjj9HXkSG3yCbArW_Ji-WQEAG6YnxhB5EtT2RGqdAr8TFveEYTKzuACa7rSwcf0e67xlzs5HKF0_ZUq47huWu7X5D9G0ENjFVo3S6Tcp2X0nFcshv_x7A"/>
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-bold text-primary shadow-sm">Leadership</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-2 text-xs text-gray-400 mb-3 font-medium">
+<span>Oct 01, 2023</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span>6 min read</span>
+</div>
+<h4 class="text-xl font-bold text-primary mb-3 group-hover:text-blue-600 transition-colors leading-tight">Hiring for Culture vs. Hiring for Skill</h4>
+<p class="text-gray-500 text-sm line-clamp-2 leading-relaxed">Why the most talented candidate on paper might be the most dangerous hire for your team dynamics.</p>
+</div>
+</div>
+</a>
+<a class="group block h-full cursor-pointer" href="#">
+<div class="h-full glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100">
+<div class="h-56 overflow-hidden relative">
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors z-10"></div>
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Marketing dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs0XhOTKvvFE4fjF5Kdnb9V_Z8AU7nSOeCSvSfdWZk2qfPviBR781VR5qhFr4a_2uLGcCBAa_yf7RDeGlMBlEEa0ooh19P61HszZbxBdjBWZ34bU10CBLAlXlTS6x3q96lIe33tO06ydUADJhD111ijLy3tvFs-lPy8DvC57wft016E3kpv69f-zkiTG9oLtGRPoI56VtQMGq0k7EVlQCe6vLSq7hNnmKRymVFj6Fx9YQ1W7JYui5Lm9J8jPUGXX9-uFSfnnWAbnI"/>
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-bold text-primary shadow-sm">Marketing</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-2 text-xs text-gray-400 mb-3 font-medium">
+<span>Oct 15, 2023</span>
+<span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+<span>3 min read</span>
+</div>
+<h4 class="text-xl font-bold text-primary mb-3 group-hover:text-blue-600 transition-colors leading-tight">Zero-Budget Marketing Strategies</h4>
+<p class="text-gray-500 text-sm line-clamp-2 leading-relaxed">Bootstrapping your way to the first 1,000 users without spending a dime on ads.</p>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="bg-primary py-24 relative overflow-hidden">
+<div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[120px] opacity-20"></div>
+<div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+<span class="inline-block py-1 px-3 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-200 text-xs font-bold uppercase tracking-widest mb-6">Stay ahead</span>
+<h2 class="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Get the strategy briefing</h2>
+<p class="text-gray-300 mb-10 text-xl font-light max-w-2xl mx-auto">Weekly insights on scaling, leadership, and markets delivered to your inbox every Tuesday morning.</p>
+<form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+<input class="flex-1 h-16 px-6 rounded-2xl border-none bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 backdrop-blur-sm transition-all outline-none" placeholder="Enter your email address" type="email"/>
+<button class="h-16 px-8 rounded-2xl bg-white text-primary font-bold hover:bg-gray-100 transition-transform transform hover:scale-105 shadow-lg shadow-white/10">
+                    Subscribe
+                </button>
+</form>
+<p class="mt-6 text-xs text-gray-500">Join 45,000+ founders. Unsubscribe anytime.</p>
+</div>
+</section>
+<footer class="bg-background-dark text-white pt-20 pb-10 border-t border-[#2d3034]">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-8">
+<svg class="text-white" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_footer)">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+</g>
+<defs>
+<clipPath id="clip0_footer"><rect fill="white" height="48" width="48"></rect></clipPath>
+</defs>
+</svg>
+</div>
+<span class="text-xl font-bold font-display">Empire Business</span>
+</div>
+<p class="text-gray-400 text-sm leading-relaxed">
+                    Empowering the next generation of business leaders with actionable insights and strategic clarity.
+                </p>
+</div>
+<div>
+<h5 class="font-bold text-white mb-6">Explore</h5>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Strategy</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Leadership</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Marketing</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Finance</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-white mb-6">Company</h5>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Contact</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-white mb-6">Connect</h5>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-[#2d3034] flex items-center justify-center text-gray-400 hover:bg-white hover:text-primary transition-all" href="#">
+<span class="text-xs font-bold">IN</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-[#2d3034] flex items-center justify-center text-gray-400 hover:bg-white hover:text-primary transition-all" href="#">
+<span class="text-xs font-bold">X</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-[#2d3034] flex items-center justify-center text-gray-400 hover:bg-white hover:text-primary transition-all" href="#">
+<span class="text-xs font-bold">IG</span>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-[#2d3034] pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+<p>© 2023 Empire Business Inc. All rights reserved.</p>
+<p class="mt-4 md:mt-0">Designed for premium impact.</p>
+</div>
+</div>
+</footer>
+
+</body></html>

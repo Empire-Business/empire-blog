@@ -1,0 +1,576 @@
+{
+  "source": {
+    "commands": "vibe-coding/COMANDOS.md",
+    "protocolsDir": "vibe-coding/PROTOCOLOS"
+  },
+  "metrics": {
+    "totalCommands": 35,
+    "totalProtocols": 26,
+    "totalCategories": 10
+  },
+  "categories": [
+    {
+      "key": "principais",
+      "name": "Principais",
+      "count": 8,
+      "commands": [
+        {
+          "command": "*começar",
+          "title": "Iniciar projeto",
+          "description": "Tutorial interativo: mostra menu, espera resposta e direciona"
+        },
+        {
+          "command": "*setup",
+          "title": "Configurar ambiente tecnico",
+          "description": "Executa setup tecnico guiado com base em `01-SETUP-TECNICO.md`"
+        },
+        {
+          "command": "*desenvolver",
+          "title": "Modo desenvolvimento",
+          "description": "Ativa protocolo de desenvolvimento"
+        },
+        {
+          "command": "*bug",
+          "title": "Reportar problema",
+          "description": "Ativa protocolo de correcao de bugs"
+        },
+        {
+          "command": "*erro",
+          "title": "Resolver erro",
+          "description": "Ajuda guiada para erros de terminal/navegador"
+        },
+        {
+          "command": "*termo",
+          "title": "Explicar termo",
+          "description": "Explica termo tecnico com linguagem simples"
+        },
+        {
+          "command": "*comando",
+          "title": "Verificar comando",
+          "description": "Checa risco antes de executar comandos"
+        },
+        {
+          "command": "*lançar",
+          "title": "Preparar lancamento",
+          "description": "Executa checklist pre-publicacao"
+        }
+      ]
+    },
+    {
+      "key": "documentacao",
+      "name": "Documentação",
+      "count": 5,
+      "commands": [
+        {
+          "command": "*roadmap",
+          "title": "Ver/atualizar roadmap",
+          "description": "Atualiza `docs/ROADMAP.md`"
+        },
+        {
+          "command": "*decisão",
+          "title": "Registrar decisao",
+          "description": "Atualiza `docs/DECISOES.md`"
+        },
+        {
+          "command": "*mudança",
+          "title": "Registrar mudanca",
+          "description": "Atualiza `docs/MUDANCAS.md`"
+        },
+        {
+          "command": "*arquitetura",
+          "title": "Atualizar arquitetura",
+          "description": "Atualiza `docs/ARQUITETURA.md`"
+        },
+        {
+          "command": "*status",
+          "title": "Ver status do projeto",
+          "description": "Resume progresso, pendencias e proximos passos"
+        }
+      ]
+    },
+    {
+      "key": "design-ux",
+      "name": "Design & UX",
+      "count": 2,
+      "commands": [
+        {
+          "command": "*design",
+          "title": "Design System",
+          "description": "Tokens, cores, tipografia e padronizacao visual"
+        },
+        {
+          "command": "*ux",
+          "title": "UX Design",
+          "description": "Heuristicas, fluxos, acessibilidade e estados"
+        }
+      ]
+    },
+    {
+      "key": "qualidade",
+      "name": "Qualidade",
+      "count": 4,
+      "commands": [
+        {
+          "command": "*seguranca",
+          "title": "Auditoria de seguranca",
+          "description": "Checklist OWASP, segredos, superficies de risco"
+        },
+        {
+          "command": "*qualidade",
+          "title": "Checar qualidade",
+          "description": "Revisao de codigo, estrutura e padroes"
+        },
+        {
+          "command": "*garantir",
+          "title": "Garantidor de qualidade",
+          "description": "Unico comando que aprova mudancas"
+        },
+        {
+          "command": "*revisar",
+          "title": "Code review",
+          "description": "Revisao completa com pontos de risco"
+        }
+      ]
+    },
+    {
+      "key": "infra-banco",
+      "name": "Infra & Banco",
+      "count": 2,
+      "commands": [
+        {
+          "command": "*banco",
+          "title": "Saude do banco",
+          "description": "Diagnostico de queries, indices e integridade"
+        },
+        {
+          "command": "*supabase",
+          "title": "Configurar Supabase",
+          "description": "Setup e validacao de configuracao Supabase"
+        }
+      ]
+    },
+    {
+      "key": "automacao",
+      "name": "Automação",
+      "count": 6,
+      "commands": [
+        {
+          "command": "*workflow",
+          "title": "Criar workflows",
+          "description": "CI/CD e automacoes de projeto"
+        },
+        {
+          "command": "*orquestrar",
+          "title": "Orquestrar comandos",
+          "description": "Combina comandos para resolver cenarios complexos"
+        },
+        {
+          "command": "*tarefas",
+          "title": "Gerenciar tarefas",
+          "description": "Planejamento e acompanhamento task-oriented"
+        },
+        {
+          "command": "*dashboard",
+          "title": "Abrir dashboard",
+          "description": "Inicia dashboard local em localhost (somente leitura)"
+        },
+        {
+          "command": "*atualizar",
+          "title": "Atualizar instalacao",
+          "description": "Atualiza instalacao existente para latest estavel ou versao pinada (`vX.Y.Z`) com checkpoint e rollback"
+        },
+        {
+          "command": "*sincronizar",
+          "title": "Sincronizar instrucoes",
+          "description": "Regera `CLAUDE.md` e `AGENTS.md` da mesma fonte e valida igualdade byte a byte"
+        }
+      ]
+    },
+    {
+      "key": "planejamento",
+      "name": "Planejamento",
+      "count": 3,
+      "commands": [
+        {
+          "command": "*planejar",
+          "title": "Planejamento detalhado",
+          "description": "WBS, riscos, estimativas e criterios"
+        },
+        {
+          "command": "*especificar",
+          "title": "Criar spec de feature",
+          "description": "Cria documento em `docs/specs/`"
+        },
+        {
+          "command": "*prd",
+          "title": "Gerar PRD completo",
+          "description": "Cria documentacao de requisitos (sem implementar codigo)"
+        }
+      ]
+    },
+    {
+      "key": "integracao",
+      "name": "Integração",
+      "count": 1,
+      "commands": [
+        {
+          "command": "*api",
+          "title": "Documentar API externa",
+          "description": "Pesquisa e documenta API antes da integracao"
+        }
+      ]
+    },
+    {
+      "key": "especialistas",
+      "name": "Especialistas",
+      "count": 3,
+      "commands": [
+        {
+          "command": "*nerd",
+          "title": "Problemas complexos",
+          "description": "Diagnostico profundo e otimizacao avancada"
+        },
+        {
+          "command": "*agentes",
+          "title": "Usar agentes",
+          "description": "Claude: Agent Teams nativo. Codex: emulacao de squads (lider + especialistas)"
+        },
+        {
+          "command": "*melhorar",
+          "title": "Refatorar codigo",
+          "description": "Propoe melhorias estruturais e tecnicas"
+        }
+      ]
+    },
+    {
+      "key": "ajuda",
+      "name": "Ajuda",
+      "count": 1,
+      "commands": [
+        {
+          "command": "*ajuda",
+          "title": "Mostra todos os comandos disponiveis",
+          "description": "Mostra todos os comandos disponiveis"
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "command": "*começar",
+      "title": "Iniciar projeto",
+      "description": "Tutorial interativo: mostra menu, espera resposta e direciona",
+      "category": "Principais"
+    },
+    {
+      "command": "*setup",
+      "title": "Configurar ambiente tecnico",
+      "description": "Executa setup tecnico guiado com base em `01-SETUP-TECNICO.md`",
+      "category": "Principais"
+    },
+    {
+      "command": "*desenvolver",
+      "title": "Modo desenvolvimento",
+      "description": "Ativa protocolo de desenvolvimento",
+      "category": "Principais"
+    },
+    {
+      "command": "*bug",
+      "title": "Reportar problema",
+      "description": "Ativa protocolo de correcao de bugs",
+      "category": "Principais"
+    },
+    {
+      "command": "*erro",
+      "title": "Resolver erro",
+      "description": "Ajuda guiada para erros de terminal/navegador",
+      "category": "Principais"
+    },
+    {
+      "command": "*termo",
+      "title": "Explicar termo",
+      "description": "Explica termo tecnico com linguagem simples",
+      "category": "Principais"
+    },
+    {
+      "command": "*comando",
+      "title": "Verificar comando",
+      "description": "Checa risco antes de executar comandos",
+      "category": "Principais"
+    },
+    {
+      "command": "*lançar",
+      "title": "Preparar lancamento",
+      "description": "Executa checklist pre-publicacao",
+      "category": "Principais"
+    },
+    {
+      "command": "*roadmap",
+      "title": "Ver/atualizar roadmap",
+      "description": "Atualiza `docs/ROADMAP.md`",
+      "category": "Documentação"
+    },
+    {
+      "command": "*decisão",
+      "title": "Registrar decisao",
+      "description": "Atualiza `docs/DECISOES.md`",
+      "category": "Documentação"
+    },
+    {
+      "command": "*mudança",
+      "title": "Registrar mudanca",
+      "description": "Atualiza `docs/MUDANCAS.md`",
+      "category": "Documentação"
+    },
+    {
+      "command": "*arquitetura",
+      "title": "Atualizar arquitetura",
+      "description": "Atualiza `docs/ARQUITETURA.md`",
+      "category": "Documentação"
+    },
+    {
+      "command": "*status",
+      "title": "Ver status do projeto",
+      "description": "Resume progresso, pendencias e proximos passos",
+      "category": "Documentação"
+    },
+    {
+      "command": "*design",
+      "title": "Design System",
+      "description": "Tokens, cores, tipografia e padronizacao visual",
+      "category": "Design & UX"
+    },
+    {
+      "command": "*ux",
+      "title": "UX Design",
+      "description": "Heuristicas, fluxos, acessibilidade e estados",
+      "category": "Design & UX"
+    },
+    {
+      "command": "*seguranca",
+      "title": "Auditoria de seguranca",
+      "description": "Checklist OWASP, segredos, superficies de risco",
+      "category": "Qualidade"
+    },
+    {
+      "command": "*qualidade",
+      "title": "Checar qualidade",
+      "description": "Revisao de codigo, estrutura e padroes",
+      "category": "Qualidade"
+    },
+    {
+      "command": "*garantir",
+      "title": "Garantidor de qualidade",
+      "description": "Unico comando que aprova mudancas",
+      "category": "Qualidade"
+    },
+    {
+      "command": "*revisar",
+      "title": "Code review",
+      "description": "Revisao completa com pontos de risco",
+      "category": "Qualidade"
+    },
+    {
+      "command": "*banco",
+      "title": "Saude do banco",
+      "description": "Diagnostico de queries, indices e integridade",
+      "category": "Infra & Banco"
+    },
+    {
+      "command": "*supabase",
+      "title": "Configurar Supabase",
+      "description": "Setup e validacao de configuracao Supabase",
+      "category": "Infra & Banco"
+    },
+    {
+      "command": "*workflow",
+      "title": "Criar workflows",
+      "description": "CI/CD e automacoes de projeto",
+      "category": "Automação"
+    },
+    {
+      "command": "*orquestrar",
+      "title": "Orquestrar comandos",
+      "description": "Combina comandos para resolver cenarios complexos",
+      "category": "Automação"
+    },
+    {
+      "command": "*tarefas",
+      "title": "Gerenciar tarefas",
+      "description": "Planejamento e acompanhamento task-oriented",
+      "category": "Automação"
+    },
+    {
+      "command": "*dashboard",
+      "title": "Abrir dashboard",
+      "description": "Inicia dashboard local em localhost (somente leitura)",
+      "category": "Automação"
+    },
+    {
+      "command": "*atualizar",
+      "title": "Atualizar instalacao",
+      "description": "Atualiza instalacao existente para latest estavel ou versao pinada (`vX.Y.Z`) com checkpoint e rollback",
+      "category": "Automação"
+    },
+    {
+      "command": "*sincronizar",
+      "title": "Sincronizar instrucoes",
+      "description": "Regera `CLAUDE.md` e `AGENTS.md` da mesma fonte e valida igualdade byte a byte",
+      "category": "Automação"
+    },
+    {
+      "command": "*planejar",
+      "title": "Planejamento detalhado",
+      "description": "WBS, riscos, estimativas e criterios",
+      "category": "Planejamento"
+    },
+    {
+      "command": "*especificar",
+      "title": "Criar spec de feature",
+      "description": "Cria documento em `docs/specs/`",
+      "category": "Planejamento"
+    },
+    {
+      "command": "*prd",
+      "title": "Gerar PRD completo",
+      "description": "Cria documentacao de requisitos (sem implementar codigo)",
+      "category": "Planejamento"
+    },
+    {
+      "command": "*api",
+      "title": "Documentar API externa",
+      "description": "Pesquisa e documenta API antes da integracao",
+      "category": "Integração"
+    },
+    {
+      "command": "*nerd",
+      "title": "Problemas complexos",
+      "description": "Diagnostico profundo e otimizacao avancada",
+      "category": "Especialistas"
+    },
+    {
+      "command": "*agentes",
+      "title": "Usar agentes",
+      "description": "Claude: Agent Teams nativo. Codex: emulacao de squads (lider + especialistas)",
+      "category": "Especialistas"
+    },
+    {
+      "command": "*melhorar",
+      "title": "Refatorar codigo",
+      "description": "Propoe melhorias estruturais e tecnicas",
+      "category": "Especialistas"
+    },
+    {
+      "command": "*ajuda",
+      "title": "Mostra todos os comandos disponiveis",
+      "description": "Mostra todos os comandos disponiveis",
+      "category": "Ajuda"
+    }
+  ],
+  "protocols": [
+    {
+      "file": "00-COMEÇAR.md",
+      "id": "00-COMEÇAR"
+    },
+    {
+      "file": "01-DESENVOLVER.md",
+      "id": "01-DESENVOLVER"
+    },
+    {
+      "file": "01-SETUP-TECNICO.md",
+      "id": "01-SETUP-TECNICO"
+    },
+    {
+      "file": "02-BUGS.md",
+      "id": "02-BUGS"
+    },
+    {
+      "file": "03-MELHORAR.md",
+      "id": "03-MELHORAR"
+    },
+    {
+      "file": "04-MANUTENCAO.md",
+      "id": "04-MANUTENCAO"
+    },
+    {
+      "file": "05-LANCAR.md",
+      "id": "05-LANCAR"
+    },
+    {
+      "file": "06-SEGURANCA.md",
+      "id": "06-SEGURANCA"
+    },
+    {
+      "file": "07-QUALIDADE.md",
+      "id": "07-QUALIDADE"
+    },
+    {
+      "file": "08-GARANTIDOR.md",
+      "id": "08-GARANTIDOR"
+    },
+    {
+      "file": "09-DESIGN.md",
+      "id": "09-DESIGN"
+    },
+    {
+      "file": "10-UX.md",
+      "id": "10-UX"
+    },
+    {
+      "file": "11-BANCO.md",
+      "id": "11-BANCO"
+    },
+    {
+      "file": "12-SUPABASE.md",
+      "id": "12-SUPABASE"
+    },
+    {
+      "file": "13-WORKFLOW.md",
+      "id": "13-WORKFLOW"
+    },
+    {
+      "file": "14-ORQUESTRAR.md",
+      "id": "14-ORQUESTRAR"
+    },
+    {
+      "file": "15-TAREFAS.md",
+      "id": "15-TAREFAS"
+    },
+    {
+      "file": "16-PLANEJAR.md",
+      "id": "16-PLANEJAR"
+    },
+    {
+      "file": "17-NERD.md",
+      "id": "17-NERD"
+    },
+    {
+      "file": "18-PRD.md",
+      "id": "18-PRD"
+    },
+    {
+      "file": "19-API.md",
+      "id": "19-API"
+    },
+    {
+      "file": "20-AGENTES.md",
+      "id": "20-AGENTES"
+    },
+    {
+      "file": "21-ROADMAP.md",
+      "id": "21-ROADMAP"
+    },
+    {
+      "file": "22-ARQUITETURA.md",
+      "id": "22-ARQUITETURA"
+    },
+    {
+      "file": "23-ATUALIZAR.md",
+      "id": "23-ATUALIZAR"
+    },
+    {
+      "file": "24-SINCRONIZAR.md",
+      "id": "24-SINCRONIZAR"
+    }
+  ]
+}

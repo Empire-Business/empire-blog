@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Empire Business - Homepage</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1d2a3a",
+              "background-light": "#f2f2f2",
+              "background-dark": "#16191c",
+              "glass-border": "rgba(255, 255, 255, 0.4)",
+              "glass-bg": "rgba(255, 255, 255, 0.65)",
+              "accent": "#3b82f6"
+            },
+            fontFamily: {
+              "display": ["Archivo", "sans-serif"],
+              "body": ["Archivo", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "2xl": "2rem",
+              "3xl": "3rem",
+              "full": "9999px"
+            },
+            backgroundImage: {
+                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            }
+          },
+        },
+      }
+    </script>
+<style>.glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        }
+        .glass-panel-dark {
+            background: rgba(29, 42, 58, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+        .glass-nav {
+            background: rgba(29, 42, 58, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #1d2a3a, #3b82f6);
+        }
+        .liquid-shape {
+            position: absolute;
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 0;
+            animation: float 10s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-background-light font-display text-primary antialiased selection:bg-primary/20">
+<header class="sticky top-0 z-50 w-full glass-nav border-b border-[#2d3034]">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-12">
+<a class="flex items-center gap-3 text-white hover:opacity-90 transition-opacity" href="#">
+<div class="size-9 text-white">
+<svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_319)">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+</g>
+<defs>
+<clipPath id="clip0_6_319"><rect fill="white" height="48" width="48"></rect></clipPath>
+</defs>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Empire Business</h2>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-white text-sm font-medium border-b-2 border-white pb-0.5" href="#">Home</a>
+<a class="text-gray-300 text-sm font-medium hover:text-white transition-colors" href="#">Programs</a>
+<a class="text-gray-300 text-sm font-medium hover:text-white transition-colors" href="#">Consulting</a>
+<a class="text-gray-300 text-sm font-medium hover:text-white transition-colors" href="#">Insights</a>
+<a class="text-gray-300 text-sm font-medium hover:text-white transition-colors" href="#">Events</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 text-gray-300 hover:text-white text-sm font-medium transition-colors mr-2">
+<span class="material-symbols-outlined text-[20px]">login</span>
+                    Client Login
+                </button>
+<button class="bg-white text-primary hover:bg-gray-100 px-6 h-10 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    Apply Now
+                </button>
+</div>
+</div>
+</div>
+</header>
+<main>
+<section class="relative w-full min-h-[85vh] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Corporate office background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa1wFLzBWnO_ZPaLnz9mIFeQyGSrgx9VefYkTuy-y35mUOnYyLC2awrx82gef_dkBTroaAsKDf8BMcxX4hma_Pj31EXTd9E0Xk1xgihun62hsJGRcpTY70cV41zRuOh2CFwChxccxlij5CykxP9zHQ8bHirkYs9AJ3JAjvDfH3H7mFjWuVSbZo5195Z3SFnwHuAEjIZSuRSN8uA_Rb43JWgqK0nqhs1jCVjySdNOq3Qvlr2Yw9jE3v1fJLyT0Tw7AUJg_thRHGMPk"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background-light via-background-light/90 to-background-light/40"></div>
+</div>
+<div class="liquid-shape w-96 h-96 top-20 right-[10%] bg-blue-400"></div>
+<div class="liquid-shape w-64 h-64 bottom-20 right-[25%] bg-indigo-300 animation-delay-2000"></div>
+<div class="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-8">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        Accepting New Applications for Q4
+                    </div>
+<h1 class="text-6xl md:text-7xl lg:text-8xl font-black text-primary leading-[0.95] tracking-tight mb-8">
+                        BUILD<br/>
+                        YOUR<br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">LEGACY.</span>
+</h1>
+<p class="text-xl text-gray-600 font-medium leading-relaxed mb-10 max-w-lg">
+                        The premier ecosystem for executives scaling high-growth companies. Master the art of strategy, leadership, and operational excellence.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-white hover:bg-primary/90 px-8 py-4 rounded-full text-base font-bold transition-all transform hover:translate-y-[-2px] shadow-lg shadow-primary/30 flex items-center justify-center gap-2">
+                            Explore Programs
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="glass-panel text-primary hover:bg-white/80 px-8 py-4 rounded-full text-base font-bold transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+                            Watch Methodology
+                        </button>
+</div>
+<div class="mt-12 flex items-center gap-8 text-sm font-semibold text-gray-500">
+<div class="flex -space-x-3">
+<img alt="User 1" class="w-10 h-10 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcjJ6udkYAe8tRqMNG2qC8aNzuF2Yk1C3kZ1dL4_a5ONRNVmz1VrUGQnaA_zAeVW_k33dg9aKqo-K6kEiOzBdUCGe07PHwO68McoWa2GHgXKKJHJiX71ltvh8F_LrTl0NroaIpKkabLdbziXyL9pLF3rUMZ64WhnX_h8yG3LLTzqpBQYnIWdgU9vK7DZtMErqIgDlVf7JgWCuFMzgdOQONUhojuZysPbby2Q6oKLsVl7oyZWRUdDsLp4n4AtfOXKDw8bDz35UsKv4"/>
+<img alt="User 2" class="w-10 h-10 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASk12iFClXHAHV4KLWXu3yYHuel4konnmeLNjvlgeK4jVhSlTv4Q8fPFiwa_H900VovVt2cFG4rMWIeY-hjLLhN_XJfNSucReK6llRvlXlBTJz6fmtGc7OGJNjLDZbjYuKv2KvzrA0vo33szbz53haat_sIrQBD1_jXVnn-B7ODBsXgUvXYpo2JKIX8ceGm5fyeZOryYqGQiXS739_GjQRgCpB6Mpt9QIcopXV-hHEvJjAU7vPf-IR5bVSOV16RMy4Bel9XFjWyqU"/>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs text-primary">+2k</div>
+</div>
+<p>Join 2,000+ executives trained.</p>
+</div>
+</div>
+<div class="relative hidden lg:block h-[600px]">
+<div class="absolute top-10 right-0 w-[400px] h-[500px] glass-panel rounded-3xl opacity-60 transform translate-x-12 rotate-6 z-0"></div>
+<div class="absolute top-20 right-12 w-[400px] h-[500px] glass-panel-dark rounded-3xl transform translate-x-6 rotate-3 z-10 flex flex-col justify-between p-8 text-white border border-white/20">
+<div>
+<div class="flex justify-between items-start mb-8">
+<span class="material-symbols-outlined text-4xl opacity-80">auto_graph</span>
+<div class="bg-white/10 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-md">+124% Growth</div>
+</div>
+<h3 class="text-3xl font-bold mb-2">Empire Scale</h3>
+<p class="text-gray-300 text-sm">Strategic Framework</p>
+</div>
+<div class="space-y-4">
+<div class="h-2 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full w-3/4 bg-blue-500 rounded-full"></div>
+</div>
+<div class="h-2 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full w-1/2 bg-blue-400 rounded-full"></div>
+</div>
+<div class="flex justify-between text-xs text-gray-400 mt-2">
+<span>Efficiency</span>
+<span>Target Reached</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-32 -left-10 bg-white shadow-xl rounded-2xl p-6 z-20 max-w-xs animate-[float_6s_ease-in-out_infinite]">
+<div class="flex items-center gap-4">
+<div class="bg-green-100 p-3 rounded-xl text-green-600">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<p class="text-xs text-gray-500 font-bold uppercase">Result</p>
+<p class="text-primary font-bold">Market Leadership</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="w-full bg-white/50 border-y border-white/60 backdrop-blur-sm py-10">
+<div class="max-w-7xl mx-auto px-4 text-center">
+<p class="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-8">Trusted by visionary leaders at</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<svg class="h-8" fill="currentColor" viewBox="0 0 100 30"><path d="M10,15 L20,5 L30,15 L20,25 Z M40,5 H50 V25 H40 Z M60,5 H80 V10 H65 V12 H75 V17 H65 V25 H60 Z"></path></svg>
+<svg class="h-7" fill="currentColor" viewBox="0 0 100 30"><circle cx="15" cy="15" r="10"></circle><rect height="20" width="20" x="35" y="5"></rect><rect height="20" width="20" x="65" y="5"></rect></svg>
+<svg class="h-8" fill="currentColor" viewBox="0 0 100 30"><path d="M10,25 L20,5 L30,25 M15,15 H25 M40,5 H60 M50,5 V25 M70,5 H90 V10 H75 V12 H85 V17 H75 V20 H90 V25 H70 Z"></path></svg>
+<svg class="h-6" fill="currentColor" viewBox="0 0 100 30"><circle cx="15" cy="15" r="8"></circle><circle cx="35" cy="15" r="8"></circle><circle cx="55" cy="15" r="8"></circle><circle cx="75" cy="15" r="8"></circle></svg>
+</div>
+</div>
+</div>
+<section class="py-24 relative overflow-hidden">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-20">
+<h2 class="text-primary font-black text-4xl md:text-5xl mb-6 tracking-tight">The Empire Methodology</h2>
+<p class="text-xl text-gray-500">We don't just teach theory. We implement a proven operating system for scale across three critical dimensions.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="group relative">
+<div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-white rounded-3xl transform group-hover:scale-[1.02] transition-transform duration-300"></div>
+<div class="relative glass-panel rounded-3xl p-10 h-full border border-white/60 hover:border-blue-200 transition-colors">
+<div class="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center mb-8 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl">strategy</span>
+</div>
+<h3 class="text-2xl font-bold text-primary mb-4">Strategic Direction</h3>
+<p class="text-gray-600 leading-relaxed mb-8">Move from reactive decision making to proactive market dominance. Define your north star and align every resource to capture it.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-sm text-gray-700 font-medium">
+<span class="material-symbols-outlined text-blue-500 text-[20px]">check_circle</span>
+                                Market Positioning
+                            </li>
+<li class="flex items-center gap-3 text-sm text-gray-700 font-medium">
+<span class="material-symbols-outlined text-blue-500 text-[20px]">check_circle</span>
+                                3-Year Vision Mapping
+                            </li>
+<li class="flex items-center gap-3 text-sm text-gray-700 font-medium">
+<span class="material-symbols-outlined text-blue-500 text-[20px]">check_circle</span>
+                                Competitive Moats
+                            </li>
+</ul>
+<a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="group relative">
+<div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-white rounded-3xl transform group-hover:scale-[1.02] transition-transform duration-300"></div>
+<div class="relative glass-panel rounded-3xl p-10 h-full border border-white/60 hover:border-blue-200 transition-colors">
+<div class="w-16 h-16 rounded-2xl bg-white text-primary border border-gray-100 flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl">group</span>
+</div>
+<h3 class="text-2xl font-bold text-primary mb-4">Cultural Architecture</h3>
+<p class="text-gray-600 leading-relaxed mb-8">Culture is the operating system of your business. Design a high-performance environment that attracts and retains top-tier talent.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-sm text-gray-700 font-medium">
+<span class="material-symbols-outlined text-blue-500 text-[20px]">check_circle</span>
+                                Leadership Development
+                            </li>
+<li class="flex items-center gap-3 text-sm text-gray-700 font-medium">
+<span class="material-symbols-outlined text-blue-500 text-[20px]">check_circle</span>
+                                Compensation Models
+                            </li>
+<li class="flex items-center gap-3 text-sm text-gray-700 font-medium">
+<span class="material-symbols-outlined text-blue-500 text-[20px]">check_circle</span>
+                                Talent Acquisition
+                            </li>
+</ul>
+<a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="group relative">
+<div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-white rounded-3xl transform group-hover:scale-[1.02] transition-transform duration-300"></div>
+<div class="relative glass-panel rounded-3xl p-10 h-full border border-white/60 hover:border-blue-200 transition-colors">
+<div class="w-16 h-16 rounded-2xl bg-white text-primary border border-gray-100 flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl">trending_up</span>
+</div>
+<h3 class="text-2xl font-bold text-primary mb-4">Financial Engine</h3>
+<p class="text-gray-600 leading-relaxed mb-8">Profit is an opinion, cash is a fact. Implement rigorous financial controls and forecasting models to fuel sustainable growth.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-sm text-gray-700 font-medium">
+<span class="material-symbols-outlined text-blue-500 text-[20px]">check_circle</span>
+                                Cash Flow Management
+                            </li>
+<li class="flex items-center gap-3 text-sm text-gray-700 font-medium">
+<span class="material-symbols-outlined text-blue-500 text-[20px]">check_circle</span>
+                                Unit Economics
+                            </li>
+<li class="flex items-center gap-3 text-sm text-gray-700 font-medium">
+<span class="material-symbols-outlined text-blue-500 text-[20px]">check_circle</span>
+                                Capital Allocation
+                            </li>
+</ul>
+<a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-primary relative overflow-hidden">
+<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px]"></div>
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="lg:w-1/2">
+<span class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4 block">Flagship Program</span>
+<h2 class="text-5xl md:text-6xl font-black text-white mb-8 tracking-tight">Empire <br/>Executive <br/>Immersion.</h2>
+<p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        A 5-day intensive residential program for C-suite leaders. Disconnect from the daily grind and reconstruct your business strategy alongside 50 other high-caliber executives.
+                    </p>
+<div class="grid grid-cols-2 gap-6 mb-10">
+<div>
+<h4 class="text-3xl font-bold text-white mb-1">5 Days</h4>
+<p class="text-sm text-gray-400">Deep Work</p>
+</div>
+<div>
+<h4 class="text-3xl font-bold text-white mb-1">50 Peers</h4>
+<p class="text-sm text-gray-400">Curated Network</p>
+</div>
+<div>
+<h4 class="text-3xl font-bold text-white mb-1">10 Mentors</h4>
+<p class="text-sm text-gray-400">Industry Titans</p>
+</div>
+<div>
+<h4 class="text-3xl font-bold text-white mb-1">1 Plan</h4>
+<p class="text-sm text-gray-400">Execution Roadmap</p>
+</div>
+</div>
+<button class="bg-white text-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                        Apply for Cohort 12
+                    </button>
+</div>
+<div class="lg:w-1/2 relative">
+<div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
+<img alt="Executive meeting" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDBRK4rwvFF0w7uw7fdlKB67m9etX2GS-j7r_SHtMpjqRpvhPYW3EJRHWejE1r3gmomLDedxiX2xpetK48wS0f8RsbT2dUi-j06LdD_vxnybpUr1OMBZ--xvJFxZ1tNvcR2CyMmlUz4aCaqjosx5PmMCxJMAVl4jf4kZ8UhJtSDOUjee8phZLwNzhAlqr_k4Gio7f1vUTQ2SbqcyWtvxS9updesYMbv0XxBaaRWB628AMHL2TRuJW2hfW__tQHKi1TIs8_b1--pU0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-80"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/50 hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl">play_arrow</span>
+</button>
+</div>
+<div class="absolute bottom-8 left-8 text-white">
+<p class="text-sm font-medium opacity-80 mb-1">Next Session</p>
+<p class="text-xl font-bold">New York City • Nov 15-20</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-4xl font-black text-primary mb-4">Insights &amp; Tools</h2>
+<p class="text-gray-500 text-lg">Knowledge to help you scale faster.</p>
+</div>
+<a class="hidden md:flex items-center font-bold text-primary hover:text-blue-600 transition-colors" href="#">
+                    View all resources <span class="material-symbols-outlined ml-2">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 h-auto md:h-[600px]">
+<a class="md:col-span-2 md:row-span-2 group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300" href="#">
+<img alt="Finance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmZ-cQLQeuPwHutB3lsL1B3kvz2LG0k5U-q7-MYtVcTxB3Ptn15kAeh79TSY2ZgN8xXPKLwGSku7wiWIfjeEMvnSiYk9h_Xx5o5b6CLc0rgXRLuhEQwibhse9PWTNkeqbXXjhbOcBCdDlSzknVwgiCXJb5toDwQ57bh4PN_ju2m5u1UwN2fqWCtep0vYUZABIQnbuaMEWxORn4uRFbo6vw7mzEDsrIs-TzH0nK4YLiPZ-NSipmtmC5qtE504vYJRjvWfA8k_g6tQ0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 text-white">
+<span class="bg-blue-600 px-3 py-1 rounded-md text-xs font-bold mb-3 inline-block">Finance</span>
+<h3 class="text-2xl font-bold mb-2 group-hover:underline decoration-2 underline-offset-4">The Art of the Pivot: Financial Modeling for 2024</h3>
+<p class="text-gray-300 line-clamp-2">How to restructure your P&amp;L for resilience in uncertain markets.</p>
+</div>
+</a>
+<a class="md:col-span-1 md:row-span-2 bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group" href="#">
+<div>
+<div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">podcasts</span>
+</div>
+<h3 class="text-xl font-bold text-primary mb-3">Empire Podcast</h3>
+<p class="text-gray-500 text-sm mb-4">Weekly conversations with founders who have exited for $100M+.</p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<img alt="Guest" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASk12iFClXHAHV4KLWXu3yYHuel4konnmeLNjvlgeK4jVhSlTv4Q8fPFiwa_H900VovVt2cFG4rMWIeY-hjLLhN_XJfNSucReK6llRvlXlBTJz6fmtGc7OGJNjLDZbjYuKv2KvzrA0vo33szbz53haat_sIrQBD1_jXVnn-B7ODBsXgUvXYpo2JKIX8ceGm5fyeZOryYqGQiXS739_GjQRgCpB6Mpt9QIcopXV-hHEvJjAU7vPf-IR5bVSOV16RMy4Bel9XFjWyqU"/>
+<div>
+<p class="text-sm font-bold text-primary">Ep. 42: Scaling Sales</p>
+<p class="text-xs text-gray-400">with Sarah Chen</p>
+</div>
+</div>
+<div class="w-full bg-gray-100 h-1 rounded-full overflow-hidden">
+<div class="bg-primary w-2/3 h-full"></div>
+</div>
+<span class="text-xs text-gray-400 font-medium">Listen now • 45 min</span>
+</div>
+</a>
+<a class="md:col-span-1 bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group" href="#">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">New Tool</span>
+<span class="material-symbols-outlined text-gray-300 group-hover:text-primary transition-colors">download</span>
+</div>
+<h3 class="text-lg font-bold text-primary mb-2">Growth Calculator</h3>
+<p class="text-sm text-gray-500">Estimate your valuation based on current metrics.</p>
+</a>
+<a class="md:col-span-1 bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden" href="#">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs font-bold group-hover:bg-white/20 group-hover:text-white transition-colors">Guide</span>
+</div>
+<h3 class="text-lg font-bold text-primary mb-2 group-hover:text-white transition-colors">Hiring for Culture</h3>
+<p class="text-sm text-gray-500 group-hover:text-gray-300 transition-colors">The definitive playbook.</p>
+</div>
+</a>
+</div>
+<div class="mt-8 text-center md:hidden">
+<a class="inline-flex items-center font-bold text-primary hover:text-blue-600 transition-colors" href="#">
+                    View all resources <span class="material-symbols-outlined ml-2">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<section class="py-24 relative">
+<div class="max-w-5xl mx-auto px-4 text-center">
+<span class="text-4xl text-primary font-serif italic mb-8 block">"</span>
+<h3 class="text-3xl md:text-5xl font-medium text-primary leading-tight mb-12">
+                "Empire Business completely changed how I view my role as CEO. I went from being the bottleneck to being the architect of our growth. We doubled revenue in 18 months."
+            </h3>
+<div class="flex flex-col items-center">
+<img alt="CEO Portrait" class="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXPXzoF4Uttk-E3wbwSJ6BThxeshbvOsa19VSncNhp2vJkdwu-FPr5ZMcNUFJNWu_3vO3JDy5kHF_sLAtVJvmogcTOx_LlTI_WTPAuGVrIa7zY6ZHX7bGS4yPhbtFpNvLswNxTKjDHx__SphvTQL3rVKSjj9HXkSG3yCbArW_Ji-WQEAG6YnxhB5EtT2RGqdAr8TFveEYTKzuACa7rSwcf0e67xlzs5HKF0_ZUq47huWu7X5D9G0ENjFVo3S6Tcp2X0nFcshv_x7A"/>
+<p class="text-lg font-bold text-primary">Marcus Thorne</p>
+<p class="text-gray-500">Founder &amp; CEO, Thorne Logistics</p>
+</div>
+</div>
+</section>
+</main>
+<section class="bg-primary py-20 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+<div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+<h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get the strategy briefing</h2>
+<p class="text-gray-300 mb-8 text-lg">Weekly insights on scaling, leadership, and markets delivered to your inbox.</p>
+<form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+<input class="flex-1 h-14 px-6 rounded-xl border-none bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 backdrop-blur-sm" placeholder="Enter your email address" type="email"/>
+<button class="h-14 px-8 rounded-xl bg-white text-primary font-bold hover:bg-gray-100 transition-colors">
+                Subscribe
+            </button>
+</form>
+<p class="mt-4 text-xs text-gray-500">No spam. Unsubscribe anytime.</p>
+</div>
+</section>
+<footer class="bg-primary text-white pt-16 pb-8 border-t border-[#2d3034]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-8">
+<svg class="text-white" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_footer)">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+</g>
+<defs>
+<clipPath id="clip0_footer"><rect fill="white" height="48" width="48"></rect></clipPath>
+</defs>
+</svg>
+</div>
+<span class="text-lg font-bold">Empire Business</span>
+</div>
+<p class="text-gray-400 text-sm leading-relaxed">
+                    Empowering the next generation of global leaders through practical education, community, and strategic insights.
+                </p>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Programs</h4>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Executive Immersion</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Online Masterclass</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Corporate Training</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Mentorship</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Company</h4>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Contact</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Press</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Legal</h4>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-[#2d3034] pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+<p>© 2023 Empire Business Inc. All rights reserved.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="hover:text-white transition-colors flex items-center gap-2" href="#">
+<span>Twitter</span>
+</a>
+<a class="hover:text-white transition-colors flex items-center gap-2" href="#">
+<span>LinkedIn</span>
+</a>
+<a class="hover:text-white transition-colors flex items-center gap-2" href="#">
+<span>Instagram</span>
+</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

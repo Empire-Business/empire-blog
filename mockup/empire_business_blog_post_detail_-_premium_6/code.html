@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Empire Business - Premium Programs</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1d2a3a",
+                        "secondary": "#2d3034",
+                        "accent": "#3b5066",
+                        "background-light": "#f2f2f2",
+                        "background-dark": "#16191c",
+                    },
+                    fontFamily: {
+                        "display": ["Archivo", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        'glow': '0 0 20px rgba(29, 42, 58, 0.15)',
+                        'soft': '0 20px 40px -10px rgba(0,0,0,0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f2f2f2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        }
+        .glass-card-dark {
+            background: rgba(29, 42, 58, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .liquid-gradient-bg {
+             background: radial-gradient(circle at 10% 20%, rgba(216, 226, 237, 0.6) 0%, rgba(242, 242, 242, 0) 50%),
+                         radial-gradient(circle at 90% 80%, rgba(200, 210, 225, 0.4) 0%, rgba(242, 242, 242, 0) 50%);
+        }
+        .card-hover-effect {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -5px rgba(29, 42, 58, 0.15);
+            border-color: rgba(29, 42, 58, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-[#f2f2f2] text-primary font-body antialiased min-h-screen flex flex-col relative overflow-x-hidden selection:bg-primary selection:text-white">
+<div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none liquid-gradient-bg">
+<div class="absolute top-[10%] right-[10%] w-[800px] h-[800px] bg-blue-100/30 rounded-full blur-[120px] mix-blend-multiply"></div>
+<div class="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-slate-200/40 rounded-full blur-[100px] mix-blend-multiply"></div>
+</div>
+<header class="sticky top-0 z-50 w-full backdrop-blur-md bg-[#1d2a3a]/95 border-b border-[#2d3034] transition-all duration-300">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<a class="flex items-center gap-3 text-white group" href="#">
+<div class="size-8 text-white transition-transform group-hover:scale-105">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_logo)">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+</g>
+<defs>
+<clipPath id="clip0_logo"><rect fill="white" height="48" width="48"></rect></clipPath>
+</defs>
+</svg>
+</div>
+<h2 class="text-xl font-display font-bold tracking-tight">Empire Business</h2>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-white font-medium text-sm transition-colors border-b-2 border-white pb-0.5" href="#">Programs</a>
+<a class="text-gray-400 hover:text-white text-sm font-medium transition-colors" href="#">Consulting</a>
+<a class="text-gray-400 hover:text-white text-sm font-medium transition-colors" href="#">Insights</a>
+<a class="text-gray-400 hover:text-white text-sm font-medium transition-colors" href="#">Events</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-gray-300 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</button>
+<button class="hidden sm:flex bg-white text-[#131416] hover:bg-gray-200 rounded-full px-6 py-2.5 text-sm font-bold font-display transition-all transform hover:-translate-y-0.5 shadow-lg shadow-white/10">
+                    Client Login
+                </button>
+<button class="lg:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-6 lg:px-12 py-16">
+<div class="max-w-4xl mx-auto text-center mb-20">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 border border-white/50 backdrop-blur-sm shadow-sm mb-6">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Enrollment Open 2024</span>
+</div>
+<h1 class="font-display font-black text-5xl md:text-6xl lg:text-7xl leading-tight text-primary tracking-tight mb-6">
+                Executive Programs for <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-slate-500">Market Leaders</span>
+</h1>
+<p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Accelerate your growth with our immersive, data-driven methodology designed for high-performance executives and scaling enterprises.
+            </p>
+</div>
+<div class="relative w-full rounded-3xl overflow-hidden glass-card-dark mb-24 group">
+<div class="absolute inset-0 bg-gradient-to-r from-[#1d2a3a] via-[#1d2a3a]/90 to-transparent z-10"></div>
+<div class="absolute inset-0 bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSfJ2PCN7N26jSz8Twc8vxxQCpR0PC4Xdegc-xWq90jt-aHr3_9lnggsJJnvmUd8HNafeOeHbaH14G8-hEN0T-GK__njVuucartO7JJYBcRomi04GKgUg7wjr_imff5maeil7rBPCesAYXXxxwwKFLW5MCO5I665DFkN7wd7UAvsq2xrTvoNR_S15FpuUoEF1c50S2vGksFV0IEGRL6dkHptvbGbIweZmfK1ivMCtPnM0E71xdBpg_VTHPUJm6R9NfZ3_aNgltqqk')] bg-cover bg-center mix-blend-overlay opacity-30 group-hover:scale-105 transition-transform duration-1000"></div>
+<div class="relative z-20 grid lg:grid-cols-2 gap-12 p-8 lg:p-16 items-center">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-yellow-400">star</span>
+<span class="text-yellow-400 font-bold text-sm tracking-wider uppercase">Flagship Program</span>
+</div>
+<h2 class="font-display font-bold text-4xl lg:text-5xl text-white leading-tight">
+                        Empire Scale™ <br/>Immersion
+                    </h2>
+<p class="text-gray-300 text-lg leading-relaxed max-w-md">
+                        Our definitive 5-day program for founders and C-level executives focused on hyper-growth strategies, operational efficiency, and leadership mastery.
+                    </p>
+<div class="flex flex-wrap gap-4 mt-4">
+<div class="px-4 py-2 bg-white/10 rounded-lg backdrop-blur-sm border border-white/10 text-sm font-medium">Strategy</div>
+<div class="px-4 py-2 bg-white/10 rounded-lg backdrop-blur-sm border border-white/10 text-sm font-medium">Operations</div>
+<div class="px-4 py-2 bg-white/10 rounded-lg backdrop-blur-sm border border-white/10 text-sm font-medium">Culture</div>
+</div>
+<div class="mt-4 flex flex-col sm:flex-row gap-4">
+<button class="px-8 py-4 bg-white text-primary font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                            Apply for Immersion
+                        </button>
+<button class="px-8 py-4 bg-transparent border border-white/30 text-white font-bold rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center gap-2 group-hover:gap-3">
+                            Download Brochure <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="hidden lg:block relative h-full min-h-[400px]">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[450px] bg-white/5 rounded-2xl backdrop-blur-md border border-white/10 rotate-6 shadow-2xl"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[450px] bg-gradient-to-br from-white/10 to-transparent rounded-2xl backdrop-blur-lg border border-white/20 -rotate-3 shadow-xl flex flex-col justify-end p-8">
+<div class="text-white/80 font-display text-2xl font-bold mb-2">94 NPS</div>
+<div class="text-gray-400 text-sm">Average Net Promoter Score from over 5,000 alumni across 12 countries.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+<button class="px-6 py-2.5 rounded-full bg-primary text-white font-medium text-sm shadow-lg shadow-primary/20">All Programs</button>
+<button class="px-6 py-2.5 rounded-full bg-white text-gray-500 font-medium text-sm hover:bg-gray-50 hover:text-primary transition-colors border border-transparent hover:border-gray-200">Management 4.0</button>
+<button class="px-6 py-2.5 rounded-full bg-white text-gray-500 font-medium text-sm hover:bg-gray-50 hover:text-primary transition-colors border border-transparent hover:border-gray-200">Sales &amp; Growth</button>
+<button class="px-6 py-2.5 rounded-full bg-white text-gray-500 font-medium text-sm hover:bg-gray-50 hover:text-primary transition-colors border border-transparent hover:border-gray-200">Financial Leadership</button>
+<button class="px-6 py-2.5 rounded-full bg-white text-gray-500 font-medium text-sm hover:bg-gray-50 hover:text-primary transition-colors border border-transparent hover:border-gray-200">Innovation</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="glass-panel rounded-2xl p-1 card-hover-effect group flex flex-col h-full">
+<div class="bg-white rounded-xl h-full p-8 flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-2xl -mr-10 -mt-10 transition-all group-hover:bg-blue-100"></div>
+<div class="w-12 h-12 rounded-lg bg-blue-50 text-primary flex items-center justify-center mb-6 relative z-10">
+<span class="material-symbols-outlined text-[28px]">trending_up</span>
+</div>
+<h3 class="font-display font-bold text-2xl text-primary mb-3">Sales Acceleration</h3>
+<p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                        Build a predictable revenue machine. Learn to structure commercial teams, implement CRM best practices, and master the art of enterprise negotiation.
+                    </p>
+<div class="border-t border-gray-100 pt-6 mt-auto">
+<div class="flex items-center justify-between text-sm font-medium mb-4">
+<span class="text-gray-400">Duration</span>
+<span class="text-primary">8 Weeks (Hybrid)</span>
+</div>
+<a class="w-full block text-center py-3 rounded-lg border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all" href="#">
+                            View Syllabus
+                        </a>
+</div>
+</div>
+</div>
+<div class="glass-panel rounded-2xl p-1 card-hover-effect group flex flex-col h-full">
+<div class="bg-white rounded-xl h-full p-8 flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full blur-2xl -mr-10 -mt-10 transition-all group-hover:bg-purple-100"></div>
+<div class="w-12 h-12 rounded-lg bg-purple-50 text-purple-900 flex items-center justify-center mb-6 relative z-10">
+<span class="material-symbols-outlined text-[28px]">groups</span>
+</div>
+<h3 class="font-display font-bold text-2xl text-primary mb-3">Leadership &amp; Culture</h3>
+<p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                        Transform your organization's DNA. Master the frameworks for building high-performance teams and creating a culture of accountability and innovation.
+                    </p>
+<div class="border-t border-gray-100 pt-6 mt-auto">
+<div class="flex items-center justify-between text-sm font-medium mb-4">
+<span class="text-gray-400">Duration</span>
+<span class="text-primary">3 Days (In-Person)</span>
+</div>
+<a class="w-full block text-center py-3 rounded-lg border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all" href="#">
+                            View Syllabus
+                        </a>
+</div>
+</div>
+</div>
+<div class="glass-panel rounded-2xl p-1 card-hover-effect group flex flex-col h-full">
+<div class="bg-white rounded-xl h-full p-8 flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-2xl -mr-10 -mt-10 transition-all group-hover:bg-emerald-100"></div>
+<div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-900 flex items-center justify-center mb-6 relative z-10">
+<span class="material-symbols-outlined text-[28px]">currency_exchange</span>
+</div>
+<h3 class="font-display font-bold text-2xl text-primary mb-3">Strategic Finance</h3>
+<p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                        Move beyond accounting. Understand cash flow dynamics, fundraising strategies, and M&amp;A preparation for mid-market companies.
+                    </p>
+<div class="border-t border-gray-100 pt-6 mt-auto">
+<div class="flex items-center justify-between text-sm font-medium mb-4">
+<span class="text-gray-400">Duration</span>
+<span class="text-primary">4 Weeks (Online Live)</span>
+</div>
+<a class="w-full block text-center py-3 rounded-lg border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all" href="#">
+                            View Syllabus
+                        </a>
+</div>
+</div>
+</div>
+<div class="glass-panel rounded-2xl p-1 card-hover-effect group flex flex-col h-full">
+<div class="bg-white rounded-xl h-full p-8 flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full blur-2xl -mr-10 -mt-10 transition-all group-hover:bg-orange-100"></div>
+<div class="w-12 h-12 rounded-lg bg-orange-50 text-orange-900 flex items-center justify-center mb-6 relative z-10">
+<span class="material-symbols-outlined text-[28px]">lightbulb</span>
+</div>
+<h3 class="font-display font-bold text-2xl text-primary mb-3">Product Strategy</h3>
+<p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                        Define winning value propositions. Learn the product management frameworks used by tech giants to build products customers love.
+                    </p>
+<div class="border-t border-gray-100 pt-6 mt-auto">
+<div class="flex items-center justify-between text-sm font-medium mb-4">
+<span class="text-gray-400">Duration</span>
+<span class="text-primary">6 Weeks (Hybrid)</span>
+</div>
+<a class="w-full block text-center py-3 rounded-lg border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all" href="#">
+                            View Syllabus
+                        </a>
+</div>
+</div>
+</div>
+<div class="glass-panel rounded-2xl p-1 card-hover-effect group flex flex-col h-full">
+<div class="bg-white rounded-xl h-full p-8 flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-full blur-2xl -mr-10 -mt-10 transition-all group-hover:bg-indigo-100"></div>
+<div class="w-12 h-12 rounded-lg bg-indigo-50 text-indigo-900 flex items-center justify-center mb-6 relative z-10">
+<span class="material-symbols-outlined text-[28px]">rocket_launch</span>
+</div>
+<h3 class="font-display font-bold text-2xl text-primary mb-3">Growth Hacking</h3>
+<p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                        Experimentation-driven marketing. Implement rapid testing cycles across paid, organic, and referral channels to unlock exponential growth.
+                    </p>
+<div class="border-t border-gray-100 pt-6 mt-auto">
+<div class="flex items-center justify-between text-sm font-medium mb-4">
+<span class="text-gray-400">Duration</span>
+<span class="text-primary">Self-Paced + Mentorship</span>
+</div>
+<a class="w-full block text-center py-3 rounded-lg border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all" href="#">
+                            View Syllabus
+                        </a>
+</div>
+</div>
+</div>
+<div class="relative rounded-2xl p-1 group flex flex-col h-full overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-slate-800"></div>
+<div class="relative z-10 p-8 h-full flex flex-col justify-between items-start text-white">
+<div>
+<div class="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 border border-white/20">
+<span class="material-symbols-outlined text-[28px]">support_agent</span>
+</div>
+<h3 class="font-display font-bold text-2xl mb-3">Custom Corporate Training</h3>
+<p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Need a bespoke solution for your entire team? We design custom in-company programs tailored to your specific industry challenges.
+                        </p>
+</div>
+<button class="flex items-center gap-2 text-sm font-bold border-b border-white pb-1 hover:text-blue-200 hover:border-blue-200 transition-colors">
+                        Speak with a consultant <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</main>
+<section class="py-24 relative overflow-hidden">
+<div class="absolute inset-0 bg-white/50"></div>
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="rounded-2xl overflow-hidden shadow-2xl relative z-10 border-4 border-white">
+<div class="aspect-[4/3] bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3QLxlgOp4zOTCLpXtZOxxE1hsNEhf90i2BJe3uk1b3Yj6j3YbEmbwfAgugrhHx13zmo8gDktZdRVTgbGVAQEnXV2mB2cEltkQY36NaoHgi4ivh1hUZiTHX6a_4DHQxHHJMzLlqJF9j-4VgxEJkJcEmLq13vcmvX3cF7ogeoksLv2QS7Dqe9J_35zLXeiRDmUx5hHSPPVBuc_AQE3IxCGHqGHqO0Yj86rbaTnIQV7klUpmHilzjxyifR4BHB6FKLPwR45slc05ces");'></div>
+</div>
+<div class="absolute -top-10 -left-10 w-2/3 h-2/3 bg-blue-100 rounded-2xl -z-10"></div>
+<div class="absolute -bottom-6 -right-6 w-1/2 h-1/2 bg-gray-200 rounded-2xl -z-10"></div>
+<div class="absolute bottom-10 -left-6 glass-panel p-6 rounded-xl max-w-[240px] shadow-glass animate-float">
+<div class="flex items-center gap-3 mb-2">
+<div class="p-2 rounded-full bg-green-100 text-green-700">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+</div>
+<span class="text-xs font-bold text-gray-500 uppercase">Impact</span>
+</div>
+<p class="font-display font-bold text-2xl text-primary mb-1">+34%</p>
+<p class="text-xs text-gray-500">Average revenue increase for participating companies within 12 months.</p>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="font-display font-bold text-4xl text-primary mb-6">Why Empire Business?</h2>
+<p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        We don't just teach theory; we install operating systems for growth. Our methodology is built on the real-world practices of the fastest-growing companies in the market.
+                    </p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-100 shadow-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<h4 class="font-display font-bold text-lg text-primary mb-1">Practitioner Faculty</h4>
+<p class="text-sm text-gray-500">Learn directly from CEOs, founders, and executives who have "been there, done that" at scale.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-100 shadow-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">diversity_3</span>
+</div>
+<div>
+<h4 class="font-display font-bold text-lg text-primary mb-1">High-Caliber Networking</h4>
+<p class="text-sm text-gray-500">Join a curated community of ambitious leaders. The person sitting next to you could be your next partner.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-100 shadow-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">build</span>
+</div>
+<div>
+<h4 class="font-display font-bold text-lg text-primary mb-1">Actionable Playbooks</h4>
+<p class="text-sm text-gray-500">Leave with templates, spreadsheets, and SOPs you can implement in your business immediately.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 relative">
+<div class="max-w-5xl mx-auto px-6 relative z-10">
+<div class="glass-panel rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
+<span class="material-symbols-outlined text-6xl text-primary/10 absolute top-8 left-8">format_quote</span>
+<div class="relative z-10">
+<p class="font-display text-2xl md:text-3xl font-medium text-primary leading-snug mb-8">
+                        "The ROI was immediate. We implemented the sales framework from the Immersion program and closed our biggest enterprise deal to date just three weeks later."
+                    </p>
+<div class="flex flex-col items-center justify-center gap-2">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md mb-2">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCP6Rl74mPoXCGiCLcZEH-oC01dUpHI7tQn5bXrOs300m1ycrbY0ndLsMSSavSdA2rBZ7UZXD7p-7lFYKJmJUzNbnhP5gkxUEUQiIW_0-929on_yp35Rn3T_sip4bElB2JPlvkzoYHha9ld19ydBR7YttG2Vlf7NBQpWPXs7SSnIBebzEoybr9XS4Jmr7On6bNsiKtNaLbMygL1fh3wSOulC2jxTlRKuwI_gx8kTlLoF_Bt2NKerzw-7tt5sRwbiILNuQlEJqUQ-Ko");'></div>
+</div>
+<div class="font-bold text-primary">Jonathan Weiss</div>
+<div class="text-sm text-gray-500">CEO, Vertex Logistics</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-[#131416] text-white py-12 border-t border-[#2d3034]">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="size-6">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="font-display font-bold text-lg">Empire Business</span>
+</div>
+<div class="text-sm text-gray-400">
+                © 2024 Empire Business. All rights reserved.
+            </div>
+<div class="flex gap-6">
+<a class="text-gray-400 hover:text-white transition-colors" href="#">Privacy</a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#">Terms</a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+
+</body></html>
