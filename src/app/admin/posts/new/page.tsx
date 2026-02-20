@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import TiptapEditor from '@/components/editor/TiptapEditor'
-import { ArrowLeft, Save, Sparkles, Loader2, Calendar } from 'lucide-react'
+import { SEOScore, GooglePreview } from '@/components/seo/SEOScore'
+import { ArrowLeft, Save, Sparkles, Loader2, Calendar, Eye } from 'lucide-react'
 import { toast } from 'sonner'
 
 interface Category {
@@ -31,6 +32,7 @@ export default function NewPostPage() {
   const [metaTitle, setMetaTitle] = useState('')
   const [metaDescription, setMetaDescription] = useState('')
   const [status, setStatus] = useState<'draft' | 'published' | 'scheduled'>('draft')
+  const [showSEOPreview, setShowSEOPreview] = useState(false)
   const [scheduledAt, setScheduledAt] = useState('')
 
   const [categories, setCategories] = useState<Category[]>([])
@@ -385,16 +387,50 @@ export default function NewPostPage() {
           <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
             <div className="flex items-center justify-between mb-3">
               <label className="text-slate-300 font-medium">SEO</label>
-              <button
-                type="button"
-                onClick={() => generateWithAI('seo')}
-                disabled={aiLoading}
-                className="flex items-center gap-1 text-sm text-accent-400 hover:text-accent-300 disabled:opacity-50"
-              >
-                <Sparkles className="h-3 w-3" />
-                Gerar
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowSEOPreview(!showSEOPreview)}
+                  className="flex items-center gap-1 text-sm text-slate-400 hover:text-white"
+                >
+                  <Eye className="h-3 w-3" />
+                  {showSEOPreview ? 'Ocultar' : 'Preview'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => generateWithAI('seo')}
+                  disabled={aiLoading}
+                  className="flex items-center gap-1 text-sm text-accent-400 hover:text-accent-300 disabled:opacity-50"
+                >
+                  <Sparkles className="h-3 w-3" />
+                  Gerar
+                </button>
+              </div>
             </div>
+
+            {/* SEO Score */}
+            <div className="mb-4">
+              <SEOScore
+                title={title}
+                metaTitle={metaTitle}
+                metaDescription={metaDescription}
+                content={content}
+                slug={title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}
+                featuredImage={featuredImage}
+              />
+            </div>
+
+            {/* Google Preview */}
+            {showSEOPreview && (
+              <div className="mb-4">
+                <GooglePreview
+                  title={metaTitle || title}
+                  metaDescription={metaDescription}
+                  slug={title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}
+                />
+              </div>
+            )}
+
             <div className="space-y-3">
               <div>
                 <label className="text-slate-400 text-sm block mb-1">

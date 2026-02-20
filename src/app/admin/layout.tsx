@@ -18,6 +18,7 @@ import {
   Sparkles,
   Webhook,
   Key,
+  BookOpen,
 } from 'lucide-react'
 
 const navigation = [
@@ -29,6 +30,7 @@ const navigation = [
   { name: 'IA', href: '/admin/ai', icon: Sparkles },
   { name: 'Webhooks', href: '/admin/webhooks', icon: Webhook },
   { name: 'API Keys', href: '/admin/api-keys', icon: Key },
+  { name: 'Docs API', href: '/admin/docs', icon: BookOpen },
   { name: 'Configurações', href: '/admin/settings', icon: Settings },
 ]
 
