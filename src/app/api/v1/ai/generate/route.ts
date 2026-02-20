@@ -6,6 +6,18 @@ interface AIRequest {
   prompt?: string
   content?: string
   context?: string
+  model?: string
+  tone?: string
+  wordCount?: number
+}
+
+const TONE_PROMPTS: Record<string, string> = {
+  professional: 'Use um tom profissional e objetivo.',
+  casual: 'Use um tom casual e descontraído, como uma conversa entre amigos.',
+  friendly: 'Use um tom amigável e acolhedor.',
+  formal: 'Use um tom formal e elegante.',
+  technical: 'Use um tom técnico e detalhado, com terminologia específica quando apropriado.',
+  persuasive: 'Use um tom persuasivo e convincente, focando em benefícios e argumentos.',
 }
 
 // POST /api/v1/ai/generate - Generate content with AI
@@ -27,14 +39,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'OpenRouter API key not configured' }, { status: 500 })
   }
 
+  const model = body.model || 'google/gemini-2.0-flash-exp:free'
+  const tone = body.tone || 'professional'
+  const wordCount = body.wordCount || 1000
+
   let systemPrompt = ''
   let userPrompt = ''
 
   switch (body.type) {
     case 'post':
       systemPrompt = `Você é um escritor de blog profissional especializado em criar conteúdo envolvente e bem estruturado.
-Escreva em português brasileiro, com um tom profissional mas acessível.
-Use markdown para formatação quando apropriado.`
+Escreva em português brasileiro.
+${TONE_PROMPTS[tone] || TONE_PROMPTS.professional}
+Use markdown para formatação quando apropriado.
+O artigo deve ter aproximadamente ${wordCount} palavras.`
       userPrompt = `Escreva um artigo de blog sobre: ${body.prompt}
 
 ${body.context ? `Contexto adicional: ${body.context}` : ''}
@@ -42,14 +60,18 @@ ${body.context ? `Contexto adicional: ${body.context}` : ''}
 O artigo deve ter:
 - Um título atraente
 - Uma introdução envolvente
-- 3-5 seções com subtítulos
-- Uma conclusão com call-to-action`
+- 3-5 seções com subtítulos claros
+- Exemplos práticos quando relevante
+- Uma conclusão com call-to-action
+
+Tamanho alvo: ${wordCount} palavras`
       break
 
     case 'title':
       systemPrompt = `Você é um especialista em SEO e copywriting.
 Gere títulos de blog otimizados para engajamento e SEO.
-Responda apenas com os títulos, um por linha.`
+Responda apenas com os títulos, um por linha.
+${TONE_PROMPTS[tone] || ''}`
       userPrompt = `Gere 5 títulos de blog para: ${body.prompt}`
       break
 
@@ -64,19 +86,23 @@ Máximo de 160 caracteres.`
       systemPrompt = `Você é um especialista em SEO.
 Analise o conteúdo e sugira otimizações para mecanismos de busca.
 Responda em JSON com: { meta_title, meta_description, keywords }`
-      userPrompt = `Analise este conteúdo e sugira meta título, meta descrição e palavras-chave:\n\n${body.content}`
+      userPrompt = `Analise este conteúdo e sugira meta título (max 60 caracteres), meta descrição (max 160 caracteres) e palavras-chave:\n\n${body.content}`
       break
 
     case 'transcription':
       systemPrompt = `Você é um especialista em transformar transcrições de vídeo em artigos de blog.
 Mantenha as informações principais mas reescreva em formato de artigo.
-Adicione subtítulos e organize o conteúdo de forma lógica.`
-      userPrompt = `Transforme esta transcrição em um artigo de blog:\n\n${body.content}`
+Adicione subtítulos e organize o conteúdo de forma lógica.
+${TONE_PROMPTS[tone] || TONE_PROMPTS.professional}`
+      userPrompt = `Transforme esta transcrição em um artigo de blog profissional:\n\n${body.content}`
       break
 
     default:
       return NextResponse.json({ error: 'Invalid generation type' }, { status: 400 })
   }
+
+  // Calculate max tokens based on word count (roughly 1.3 tokens per word)
+  const maxTokens = Math.min(4000, Math.max(500, Math.ceil(wordCount * 1.5)))
 
   try {
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -88,13 +114,13 @@ Adicione subtítulos e organize o conteúdo de forma lógica.`
         'X-Title': 'Empire Blog',
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-exp:free',
+        model,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt },
         ],
         temperature: 0.7,
-        max_tokens: 2000,
+        max_tokens: maxTokens,
       }),
     })
 
@@ -112,14 +138,14 @@ Adicione subtítulos e organize o conteúdo de forma lógica.`
       type: body.type,
       prompt: userPrompt,
       result: generatedContent,
-      model: 'gemini-2.0-flash-exp',
+      model: model.split('/').pop() || model,
       tokens_used: result.usage?.total_tokens,
     })
 
     return NextResponse.json({
       data: {
         content: generatedContent,
-        model: 'gemini-2.0-flash-exp',
+        model: model.split('/').pop() || model,
         tokens: result.usage?.total_tokens,
       },
     })

@@ -13,12 +13,38 @@ import {
   Loader2,
   Copy,
   Check,
+  Settings,
 } from 'lucide-react'
+import { toast } from 'sonner'
+
+const AI_MODELS = [
+  { id: 'google/gemini-2.0-flash-exp:free', name: 'Gemini 2.0 Flash (Grátis)', tier: 'free' },
+  { id: 'google/gemini-2.5-pro-preview', name: 'Gemini 2.5 Pro', tier: 'pro' },
+  { id: 'anthropic/claude-3.5-sonnet', name: 'Claude 3.5 Sonnet', tier: 'pro' },
+  { id: 'openai/gpt-4o-mini', name: 'GPT-4o Mini', tier: 'pro' },
+  { id: 'openai/gpt-4o', name: 'GPT-4o', tier: 'pro' },
+]
+
+const TONES = [
+  { id: 'professional', name: 'Profissional' },
+  { id: 'casual', name: 'Casual' },
+  { id: 'friendly', name: 'Amigável' },
+  { id: 'formal', name: 'Formal' },
+  { id: 'technical', name: 'Técnico' },
+  { id: 'persuasive', name: 'Persuasivo' },
+]
+
+const WORD_COUNTS = [
+  { id: 500, name: 'Curto (~500 palavras)' },
+  { id: 1000, name: 'Médio (~1000 palavras)' },
+  { id: 1500, name: 'Longo (~1500 palavras)' },
+  { id: 2000, name: 'Muito longo (~2000 palavras)' },
+]
 
 export default function AIPage() {
   const [activeTab, setActiveTab] = useState<'generate' | 'transcribe'>('generate')
   const [loading, setLoading] = useState(false)
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState<string | null>(null)
 
   // Generate form
   const [generateType, setGenerateType] = useState<'post' | 'title' | 'excerpt' | 'seo'>('post')
@@ -26,13 +52,19 @@ export default function AIPage() {
   const [context, setContext] = useState('')
   const [generatedContent, setGeneratedContent] = useState('')
 
+  // AI Settings
+  const [selectedModel, setSelectedModel] = useState(AI_MODELS[0].id)
+  const [selectedTone, setSelectedTone] = useState('professional')
+  const [wordCount, setWordCount] = useState(1000)
+  const [showSettings, setShowSettings] = useState(false)
+
   // Transcribe form
   const [videoUrl, setVideoUrl] = useState('')
   const [transcription, setTranscription] = useState('')
 
   const handleGenerate = async () => {
     if (!prompt.trim()) {
-      alert('Digite o prompt para geração')
+      toast.error('Digite o prompt para geração')
       return
     }
 
@@ -47,6 +79,9 @@ export default function AIPage() {
           type: generateType,
           prompt,
           context,
+          model: selectedModel,
+          tone: selectedTone,
+          wordCount,
         }),
       })
 
@@ -57,8 +92,9 @@ export default function AIPage() {
       }
 
       setGeneratedContent(result.data.content)
+      toast.success('Conteúdo gerado com sucesso!')
     } catch (error) {
-      alert(error instanceof Error ? error.message : 'Erro na geração')
+      toast.error(error instanceof Error ? error.message : 'Erro na geração')
     } finally {
       setLoading(false)
     }
@@ -66,7 +102,7 @@ export default function AIPage() {
 
   const handleTranscribe = async () => {
     if (!videoUrl.trim()) {
-      alert('Digite a URL do vídeo')
+      toast.error('Digite a URL do vídeo')
       return
     }
 
@@ -87,17 +123,19 @@ export default function AIPage() {
       }
 
       setTranscription(result.data.transcription)
+      toast.success('Transcrição concluída!')
     } catch (error) {
-      alert(error instanceof Error ? error.message : 'Erro na transcrição')
+      toast.error(error instanceof Error ? error.message : 'Erro na transcrição')
     } finally {
       setLoading(false)
     }
   }
 
-  const handleCopy = async (text: string) => {
+  const handleCopy = async (text: string, id: string) => {
     await navigator.clipboard.writeText(text)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    setCopied(id)
+    toast.success('Copiado!')
+    setTimeout(() => setCopied(null), 2000)
   }
 
   return (
@@ -153,6 +191,72 @@ export default function AIPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Input */}
           <div className="space-y-4">
+            {/* AI Settings Toggle */}
+            <div className="flex items-center justify-between">
+              <span className="text-slate-300 font-medium">Configurações de IA</span>
+              <button
+                onClick={() => setShowSettings(!showSettings)}
+                className="flex items-center gap-1 text-sm text-slate-400 hover:text-white"
+              >
+                <Settings className="h-4 w-4" />
+                {showSettings ? 'Ocultar' : 'Mostrar'}
+              </button>
+            </div>
+
+            {/* Settings Panel */}
+            {showSettings && (
+              <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 space-y-4">
+                <div>
+                  <label className="text-slate-300 text-sm block mb-2">Modelo</label>
+                  <select
+                    value={selectedModel}
+                    onChange={(e) => setSelectedModel(e.target.value)}
+                    className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm"
+                  >
+                    {AI_MODELS.map((model) => (
+                      <option key={model.id} value={model.id}>
+                        {model.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {generateType === 'post' && (
+                  <>
+                    <div>
+                      <label className="text-slate-300 text-sm block mb-2">Tom de Voz</label>
+                      <select
+                        value={selectedTone}
+                        onChange={(e) => setSelectedTone(e.target.value)}
+                        className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm"
+                      >
+                        {TONES.map((tone) => (
+                          <option key={tone.id} value={tone.id}>
+                            {tone.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="text-slate-300 text-sm block mb-2">Tamanho</label>
+                      <select
+                        value={wordCount}
+                        onChange={(e) => setWordCount(parseInt(e.target.value))}
+                        className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm"
+                      >
+                        {WORD_COUNTS.map((wc) => (
+                          <option key={wc.id} value={wc.id}>
+                            {wc.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
+
             <div>
               <label className="text-slate-300 font-medium block mb-2">
                 Tipo de Geração
@@ -213,7 +317,7 @@ export default function AIPage() {
                 <textarea
                   value={context}
                   onChange={(e) => setContext(e.target.value)}
-                  placeholder="Informações extras, público-alvo, tom de voz..."
+                  placeholder="Informações extras, público-alvo, pontos-chave..."
                   rows={2}
                   className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder:text-slate-500 focus:border-primary-500 focus:outline-none resize-none"
                 />
@@ -240,25 +344,25 @@ export default function AIPage() {
               <label className="text-slate-300 font-medium">Resultado</label>
               {generatedContent && (
                 <button
-                  onClick={() => handleCopy(generatedContent)}
+                  onClick={() => handleCopy(generatedContent, 'generated')}
                   className="flex items-center gap-1 text-sm text-slate-400 hover:text-white"
                 >
-                  {copied ? (
+                  {copied === 'generated' ? (
                     <Check className="h-4 w-4 text-accent-400" />
                   ) : (
                     <Copy className="h-4 w-4" />
                   )}
-                  {copied ? 'Copiado!' : 'Copiar'}
+                  {copied === 'generated' ? 'Copiado!' : 'Copiar'}
                 </button>
               )}
             </div>
-            <div className="min-h-[300px] bg-slate-800 border border-slate-700 rounded-lg p-4">
+            <div className="min-h-[400px] bg-slate-800 border border-slate-700 rounded-lg p-4">
               {generatedContent ? (
                 <pre className="whitespace-pre-wrap text-slate-200 text-sm">
                   {generatedContent}
                 </pre>
               ) : (
-                <p className="text-slate-500 text-center py-12">
+                <p className="text-slate-500 text-center py-16">
                   O conteúdo gerado aparecerá aqui
                 </p>
               )}
@@ -324,15 +428,15 @@ export default function AIPage() {
               <label className="text-slate-300 font-medium">Transcrição</label>
               {transcription && (
                 <button
-                  onClick={() => handleCopy(transcription)}
+                  onClick={() => handleCopy(transcription, 'transcription')}
                   className="flex items-center gap-1 text-sm text-slate-400 hover:text-white"
                 >
-                  {copied ? (
+                  {copied === 'transcription' ? (
                     <Check className="h-4 w-4 text-accent-400" />
                   ) : (
                     <Copy className="h-4 w-4" />
                   )}
-                  {copied ? 'Copiado!' : 'Copiar'}
+                  {copied === 'transcription' ? 'Copiado!' : 'Copiar'}
                 </button>
               )}
             </div>
