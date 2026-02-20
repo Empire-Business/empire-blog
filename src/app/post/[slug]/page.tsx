@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Clock, Eye, ArrowLeft, Calendar } from 'lucide-react'
 import { Metadata } from 'next'
+import { ArticleJsonLd, BreadcrumbJsonLd } from '@/components/seo/JsonLd'
 
 interface PostPageProps {
   params: Promise<{ slug: string }>
@@ -82,8 +83,30 @@ export default async function PostPage({ params }: PostPageProps) {
     .neq('id', post.id)
     .limit(3)
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://empire.blog'
+  const postUrl = `${baseUrl}/post/${post.slug}`
+
   return (
     <div className="min-h-screen bg-slate-950">
+      {/* JSON-LD Structured Data */}
+      <ArticleJsonLd
+        title={post.meta_title || post.title}
+        description={post.meta_description || post.excerpt || ''}
+        url={postUrl}
+        datePublished={post.published_at || post.created_at}
+        dateModified={post.updated_at}
+        image={post.featured_image || undefined}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Início', url: baseUrl },
+          ...(post.categories && post.categories.length > 0
+            ? [{ name: post.categories[0].name, url: `${baseUrl}/categoria/${post.category_slug}` }]
+            : []),
+          { name: post.title, url: postUrl },
+        ]}
+      />
+
       {/* Header */}
       <header className="border-b border-slate-800">
         <div className="max-w-4xl mx-auto px-4 py-4">
