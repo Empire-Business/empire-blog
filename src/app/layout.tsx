@@ -18,8 +18,29 @@ const jetbrains = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Empire Blog',
+  title: {
+    default: 'Empire Blog',
+    template: '%s | Empire Blog',
+  },
   description: 'Blog profissional com CMS completo e IA integrada',
+  keywords: ['blog', 'marketing digital', 'negócios', 'empresas', 'estratégia'],
+  authors: [{ name: 'Empire Business' }],
+  creator: 'Empire Business',
+  publisher: 'Empire Business',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://empire.blog'),
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    siteName: 'Empire Blog',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@empirebusiness',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({

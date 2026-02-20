@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import TiptapEditor from '@/components/editor/TiptapEditor'
-import { ArrowLeft, Save, Sparkles, Loader2 } from 'lucide-react'
+import { ArrowLeft, Save, Sparkles, Loader2, Calendar } from 'lucide-react'
+import { toast } from 'sonner'
 
 interface Category {
   slug: string
@@ -29,7 +30,8 @@ export default function NewPostPage() {
   const [featuredImage, setFeaturedImage] = useState('')
   const [metaTitle, setMetaTitle] = useState('')
   const [metaDescription, setMetaDescription] = useState('')
-  const [status, setStatus] = useState<'draft' | 'published'>('draft')
+  const [status, setStatus] = useState<'draft' | 'published' | 'scheduled'>('draft')
+  const [scheduledAt, setScheduledAt] = useState('')
 
   const [categories, setCategories] = useState<Category[]>([])
   const [tags, setTags] = useState<Tag[]>([])
@@ -59,7 +61,12 @@ export default function NewPostPage() {
 
   const handleSave = async () => {
     if (!title.trim()) {
-      alert('O título é obrigatório')
+      toast.error('O título é obrigatório')
+      return
+    }
+
+    if (status === 'scheduled' && !scheduledAt) {
+      toast.error('Defina a data de agendamento')
       return
     }
 
@@ -69,7 +76,7 @@ export default function NewPostPage() {
       data: { user },
     } = await supabase.auth.getUser()
     if (!user) {
-      alert('Você precisa estar logado')
+      toast.error('Você precisa estar logado')
       setLoading(false)
       return
     }
@@ -78,6 +85,9 @@ export default function NewPostPage() {
     const wordCount = content.split(/\s+/).filter(Boolean).length
     const readTime = Math.max(1, Math.ceil(wordCount / 200))
     const autoExcerpt = excerpt || content.replace(/<[^>]*>/g, '').slice(0, 160) + '...'
+
+    const isPublished = status === 'published'
+    const isScheduled = status === 'scheduled'
 
     const { error } = await supabase.from('posts').insert({
       title,
@@ -88,18 +98,27 @@ export default function NewPostPage() {
       category_slug: categorySlug || null,
       tag_slugs: selectedTags,
       author_id: user.id,
-      status,
+      status: isScheduled ? 'draft' : status,
       meta_title: metaTitle || title,
       meta_description: metaDescription || autoExcerpt,
       read_time: readTime,
-      published_at: status === 'published' ? new Date().toISOString() : null,
+      published_at: isPublished ? new Date().toISOString() : null,
+      scheduled_at: isScheduled ? new Date(scheduledAt).toISOString() : null,
     })
 
     setLoading(false)
 
     if (error) {
-      alert('Erro ao salvar: ' + error.message)
+      toast.error('Erro ao salvar: ' + error.message)
       return
+    }
+
+    if (isScheduled) {
+      toast.success('Post agendado com sucesso!')
+    } else if (isPublished) {
+      toast.success('Post publicado com sucesso!')
+    } else {
+      toast.success('Rascunho salvo com sucesso!')
     }
 
     router.push('/admin/posts')
@@ -107,15 +126,16 @@ export default function NewPostPage() {
 
   const generateWithAI = async (type: 'content' | 'title' | 'excerpt' | 'seo') => {
     if (type === 'content' && !title) {
-      alert('Digite um título primeiro para gerar o conteúdo')
+      toast.error('Digite um título primeiro para gerar o conteúdo')
       return
     }
     if ((type === 'excerpt' || type === 'seo') && !content) {
-      alert('Escreva o conteúdo primeiro')
+      toast.error('Escreva o conteúdo primeiro')
       return
     }
 
     setAiLoading(true)
+    const loadingToast = toast.loading('Gerando com IA...')
 
     try {
       const response = await fetch('/api/v1/ai/generate', {
@@ -136,23 +156,29 @@ export default function NewPostPage() {
 
       if (type === 'content') {
         setContent(result.data.content)
+        toast.success('Conteúdo gerado com sucesso!')
       } else if (type === 'title') {
         const titles = result.data.content.split('\n').filter(Boolean)
         if (titles.length > 0) setTitle(titles[0].replace(/^\d+\.\s*/, ''))
+        toast.success('Títulos gerados!')
       } else if (type === 'excerpt') {
         setExcerpt(result.data.content)
+        toast.success('Resumo gerado com sucesso!')
       } else if (type === 'seo') {
         try {
           const seo = JSON.parse(result.data.content)
           if (seo.meta_title) setMetaTitle(seo.meta_title)
           if (seo.meta_description) setMetaDescription(seo.meta_description)
+          toast.success('SEO preenchido automaticamente!')
         } catch {
           setMetaDescription(result.data.content)
+          toast.success('Meta descrição gerada!')
         }
       }
     } catch (error) {
-      alert(error instanceof Error ? error.message : 'Erro na geração')
+      toast.error(error instanceof Error ? error.message : 'Erro na geração')
     } finally {
+      toast.dismiss(loadingToast)
       setAiLoading(false)
     }
   }
@@ -162,6 +188,11 @@ export default function NewPostPage() {
       prev.includes(slug) ? prev.filter((t) => t !== slug) : [...prev, slug]
     )
   }
+
+  // Minimum datetime for scheduling (1 hour from now)
+  const minScheduleDate = new Date(Date.now() + 60 * 60 * 1000)
+    .toISOString()
+    .slice(0, 16)
 
   return (
     <div className="space-y-6">
@@ -182,12 +213,25 @@ export default function NewPostPage() {
         <div className="flex items-center gap-3">
           <select
             value={status}
-            onChange={(e) => setStatus(e.target.value as 'draft' | 'published')}
+            onChange={(e) => setStatus(e.target.value as 'draft' | 'published' | 'scheduled')}
             className="px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white"
           >
             <option value="draft">Rascunho</option>
-            <option value="published">Publicado</option>
+            <option value="published">Publicar agora</option>
+            <option value="scheduled">Agendar</option>
           </select>
+          {status === 'scheduled' && (
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4 text-slate-400" />
+              <input
+                type="datetime-local"
+                value={scheduledAt}
+                onChange={(e) => setScheduledAt(e.target.value)}
+                min={minScheduleDate}
+                className="px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm"
+              />
+            </div>
+          )}
           <button
             onClick={handleSave}
             disabled={loading}
@@ -198,7 +242,7 @@ export default function NewPostPage() {
             ) : (
               <Save className="h-4 w-4" />
             )}
-            Salvar
+            {status === 'scheduled' ? 'Agendar' : status === 'published' ? 'Publicar' : 'Salvar'}
           </button>
         </div>
       </div>
@@ -363,6 +407,7 @@ export default function NewPostPage() {
                   placeholder="Título para SEO..."
                   className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm placeholder:text-slate-500 focus:border-primary-500 focus:outline-none"
                 />
+                <p className="text-xs text-slate-500 mt-1">{metaTitle.length}/60 caracteres</p>
               </div>
               <div>
                 <label className="text-slate-400 text-sm block mb-1">
@@ -375,6 +420,7 @@ export default function NewPostPage() {
                   rows={2}
                   className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm placeholder:text-slate-500 focus:border-primary-500 focus:outline-none resize-none"
                 />
+                <p className="text-xs text-slate-500 mt-1">{metaDescription.length}/160 caracteres</p>
               </div>
             </div>
           </div>

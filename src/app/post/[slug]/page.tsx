@@ -2,9 +2,56 @@ import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Clock, Eye, ArrowLeft, Calendar } from 'lucide-react'
+import { Metadata } from 'next'
 
 interface PostPageProps {
   params: Promise<{ slug: string }>
+}
+
+// Generate metadata for SEO
+export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const supabase = await createClient()
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://empire.blog'
+
+  const { data: post } = await supabase
+    .from('posts')
+    .select('title, meta_title, meta_description, excerpt, featured_image, categories')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .single()
+
+  if (!post) {
+    return {
+      title: 'Post não encontrado',
+    }
+  }
+
+  const title = post.meta_title || post.title
+  const description = post.meta_description || post.excerpt
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description: description || '',
+      type: 'article',
+      url: `${baseUrl}/post/${slug}`,
+      images: post.featured_image ? [{ url: post.featured_image }] : [],
+      siteName: 'Empire Blog',
+      locale: 'pt_BR',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: description || '',
+      images: post.featured_image ? [post.featured_image] : [],
+    },
+    alternates: {
+      canonical: `${baseUrl}/post/${slug}`,
+    },
+  }
 }
 
 export default async function PostPage({ params }: PostPageProps) {

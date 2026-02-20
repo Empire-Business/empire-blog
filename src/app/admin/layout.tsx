@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import { Toaster } from 'sonner'
 import {
   LayoutDashboard,
   FileText,
@@ -71,6 +72,8 @@ export default function AdminLayout({
 
   return (
     <div className="min-h-screen bg-slate-900">
+      <Toaster position="top-right" richColors closeButton />
+
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div
